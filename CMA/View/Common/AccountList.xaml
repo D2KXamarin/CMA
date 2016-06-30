@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.AccountList" Title="Account List">
+	<ContentPage.BindingContext>
+		<local:VMAccountList />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			
+			<StackLayout Orientation="Horizontal" HeightRequest="50">
+				<Entry x:Name="txtSearchAccount"  Text="{Binding PSearchValue}" Placeholder="Search Account" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnSearch" Text="Search" HeightRequest="20" TextColor="White" Command="{Binding SearchAccount}"  FontAttributes="Bold" HorizontalOptions="Fill" IsEnabled="{Binding IsSearchEnalble}"/>
+			</StackLayout>
+			<ActivityIndicator Color="Red" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ListView x:Name="lvAccountList" ItemsSource="{Binding PAccountList}" SelectedItem="{Binding PSelectedAccount}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="5">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20">
+									</RowDefinition>
+
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100">
+									</ColumnDefinition>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+
+								</Grid.ColumnDefinitions>
+
+								<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="AccountID:">
+								</Label>
+								<Label Grid.Row="0" Grid.Column="1" Text="{Binding AccountID}">
+								</Label>
+<!--								<Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" x:Name="ImgForward" Source="nextImg.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" />
+								<Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="AccountName:">
+								</Label>
+								<Label Grid.Row="1" Grid.Column="1" Text="Binding BranchName">
+								</Label>-->
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<StackLayout Orientation="Horizontal" HeightRequest="50">
+<!--				<Button x:Name="btnOk" Text="Ok" HeightRequest="20" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />-->
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.ActionEventDiary" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Action Event Diary">
+	<ContentPage.BindingContext>
+		<local:VMActionEventDiary />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+			<ScrollView>
+				<StackLayout>
+					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="60" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="70" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="70" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Text="Assigned Action" Grid.Row="0" Grid.Column="0" YAlign="Center">
+							</Label>
+							<Editor x:Name="TxtAssignedAction" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PAssignedAction}">
+							</Editor>
+							<Label Text="Status" Grid.Row="1" Grid.Column="0">
+							</Label>
+							<Picker x:Name="pickerStatus" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding PStatusIndex}" IsEnabled="{Binding IsEnableStatus}">
+							</Picker>
+							<Label Text="Commencement Date" Grid.Row="2" Grid.Column="0">
+							</Label>
+							<DatePicker x:Name="DtPCommencementDate" Grid.Row="2" Grid.Column="1" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PCommecementDate}" IsEnabled="{Binding IsCommecementDateEnalble}">
+								<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+							</DatePicker>
+							<Label Text="Commencement Comment" Grid.Row="3" Grid.Column="0">
+							</Label>
+							<Editor x:Name="TxtCommencementComment" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding CommencementComment}" IsEnabled="{Binding IsEnalbleCommencementComment}">
+							</Editor>
+							<Label Text="Closure Date" Grid.Row="4" Grid.Column="0">
+							</Label>
+							<DatePicker x:Name="DtPClosureDate" Grid.Row="4" Grid.Column="1" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PCloserDate}" IsEnabled="{Binding IsEnalbleClosureDate}">
+								<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+							</DatePicker>
+							<Label Text="Closure Comment" Grid.Row="5" Grid.Column="0">
+							</Label>
+							<Editor x:Name="TxtClosureComment" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="1" Text="{Binding ClosureComment}" IsEnabled="{Binding IsEnalbleClosureComment}">
+							</Editor>
+						</Grid>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20">
+						<Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}">
+						</Button>
+						<Button x:Name="btnEdit" Text="Edit" HorizontalOptions="FillAndExpand" Command="{Binding EditCommand}">
+						</Button>
+						<Button x:Name="btnRemove" Text="Cancel" HorizontalOptions="FillAndExpand">
+						</Button>
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

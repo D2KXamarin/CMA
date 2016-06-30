@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="CMA.StakeholderList">
+	<ContentPage.BindingContext>
+		<local:VMStakeholderList />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ListView x:Name="lvStackholderList" ItemsSource="{Binding PStakeholderList}" RowHeight="50">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="5">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="50">
+									</RowDefinition>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100">
+									</ColumnDefinition>
+									<ColumnDefinition Width="30">
+									</ColumnDefinition>
+								</Grid.ColumnDefinitions>
+								<Label x:Name="lblUserName" Grid.Row="0" Grid.Column="0" YAlign="Center" Text="{Binding UserName}">
+								</Label>
+								<controls:CheckBox x:Name="cbIsAllocate" Grid.Row="0" Grid.Column="1" Checked="{Binding IsAllocate}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="14" />
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<StackLayout Orientation="Horizontal" HeightRequest="50" HorizontalOptions="CenterAndExpand">
+				<Button x:Name="btnOk" Text="Ok" Command="{Binding OkCommand}" HeightRequest="20" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+				<Button x:Name="btnCancel" Text="Cancel" HeightRequest="20" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

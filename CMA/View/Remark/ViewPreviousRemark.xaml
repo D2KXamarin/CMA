@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="View Previous Remark" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.ViewPreviousRemark">
+	<ContentPage.BindingContext>
+		<local:VMViewPreviousRemark />
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="labelContentStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="FontSize" Value="14" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ListView x:Name="lvPreviousRemarks" ItemsSource="{Binding PPreviousRemarkList}" RowHeight="80" SeparatorColor="White">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="10" HorizontalOptions="FillAndExpand">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+								</Grid.ColumnDefinitions>
+								<Label Grid.Row="0" Grid.Column="0" Text="{Binding CustomerACID}" Style="{StaticResource labelContentStyle}" />
+								<Label Grid.Row="1" Grid.Column="0" Text="{Binding Remark}" Style="{StaticResource labelContentStyle}">
+								</Label>
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

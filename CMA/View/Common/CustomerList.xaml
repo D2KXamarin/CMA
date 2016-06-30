@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.CustomerList" Icon="icon.png"  
+             xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Customer List">
+      <ContentPage.BindingContext>
+		<local:VMCustomerList />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleSearch}">
+				<Entry x:Name ="txtCustomerList"  Text="{Binding PSearch}" Placeholder="Search Customer" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnSearch" Text="Search"  Command="{Binding SearchCustomer}"   IsEnabled="{Binding IsEnableSearch}"  />
+			</StackLayout>
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ListView x:Name="OCustomerList" ItemsSource="{Binding PCustomerList}" RowHeight="50" SelectedItem="{Binding PSelectedCustomer}" >
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="5">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+
+								</Grid.ColumnDefinitions>
+
+								<Label Grid.Row="0" Grid.Column="0" Text="{Binding CustomerID}">
+								</Label>
+								<Label Grid.Row="1" Grid.Column="0" Text="{Binding CustomerName}" >
+								</Label>
+
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+<!--			<Button x:Name="btnSave" Text="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding IsEnableSave}"></Button>-->
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.RemarkTabbedPage" xmlns:local="clr-namespace:CMA;assembly=CMA" Icon="icon.png">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="ToolMenuList" Order="Primary" Icon="businessmanadd.png">
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+	<!--  <TabbedPage.Children>
+  	
+    <local:InstitutionalMemoryDiary  Title="Institutional Memory Dairy" />
+    <local:ViewPreviousRemark Title="View Previous Remark" />
+    <local:ActionEventDiaryList Title="Action Event List"/>
+
+
+  </TabbedPage.Children>-->
+</TabbedPage>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.ActionEventDiaryList" xmlns:local="clr-namespace:CMA;assembly=CMA" Icon="icon.png" Title="ActionEventDiary Details">
+	<ContentPage.BindingContext>
+		<local:VMActionEventDiaryList />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			<Label x:Name="lblCustomerEntityID " HorizontalOptions="Center" FontSize="20" IsEnabled="false" FontAttributes="Bold">
+			</Label>
+			<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+				<ScrollView>
+					<ListView x:Name="RemarkDetailsList" ItemsSource="{Binding PRemarkDetailsList}" RowHeight="170">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="20" />
+											<RowDefinition Height="20" />
+											<RowDefinition Height="20" />
+											<RowDefinition Height="20" />
+											<RowDefinition Height="20" />
+											<RowDefinition Height="20" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="130" />
+											<ColumnDefinition Width="*" />
+										</Grid.ColumnDefinitions>
+										<Label Text="ACID/Customer ID " Grid.Column="0" Grid.Row="0">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="0" Text="{Binding AcID}">
+										</Label>
+										<Label Text="Ramark Date" Grid.Column="0" Grid.Row="1">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="1" Text="{Binding RemarkDt}">
+										</Label>
+										<Label Text="Remark By Whom" Grid.Column="0" Grid.Row="2">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="2" Text="{Binding RemarkByWhom}">
+										</Label>
+										<Label Text="What IsTo Be Done " Grid.Column="0" Grid.Row="3">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="3" Text="{Binding WhatIsToBeDone}">
+										</Label>
+										<Label Text="Status" Grid.Column="0" Grid.Row="4">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="4" Text="{Binding Status}">
+										</Label>
+										<Label Text="DateByWhen" Grid.Column="0" Grid.Row="5">
+										</Label>
+										<Label Grid.Column="1" Grid.Row="5" Text="{Binding DtByWhen}">
+										</Label>
+									</Grid>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+				</ScrollView>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.SecurityDetails" Title="Security Details">
+	<ContentPage.BindingContext>
+		<local:VMSecurityDetails />
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="labelCaptionStyle" TargetType="Label">
+				<Setter Property="FontAttributes" Value="Bold" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="FontSize" Value="14" />
+			</Style>
+			<Style x:Key="labelContentStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="FontSize" Value="14" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ScrollView>
+				<ListView x:Name="lvSecurityDetails" ItemsSource="{Binding PSecurityDetailsList}" RowHeight="150">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid Padding="10" HorizontalOptions="CenterAndExpand">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="20">
+										</RowDefinition>
+										<RowDefinition Height="20">
+										</RowDefinition>
+										<RowDefinition Height="20">
+										</RowDefinition>
+										<RowDefinition Height="20">
+										</RowDefinition>
+										<RowDefinition Height="20">
+										</RowDefinition>
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="100">
+										</ColumnDefinition>
+										<ColumnDefinition Width="*">
+										</ColumnDefinition>
+									</Grid.ColumnDefinitions>
+									<Label Grid.Row="0" Grid.Column="0" Text="AC ID:" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label Grid.Row="0" Grid.Column="1" Text="{Binding AcId}" Style="{StaticResource labelContentStyle}">
+									</Label>
+									<Label Grid.Row="1" Grid.Column="0" Text="Security Category" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label Grid.Row="1" Grid.Column="1" Text="{Binding SecurityCategory}" Style="{StaticResource labelContentStyle}">
+									</Label>
+									<Label Grid.Row="2" Grid.Column="0" Text="Security Type" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label Grid.Row="2" Grid.Column="1" Text="{Binding SecurityType}" Style="{StaticResource labelContentStyle}">
+									</Label>
+									<Label Grid.Row="3" Grid.Column="0" Text="Security Value" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label Grid.Row="3" Grid.Column="1" Text="{Binding SecurityValue}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+									</Label>
+									<Label Grid.Row="4" Grid.Column="0" Text="Valuation Date" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label Grid.Row="4" Grid.Column="1" Text="{Binding ValuationDt}" Style="{StaticResource labelContentStyle}">
+									</Label>
+									<Label IsVisible="false" Text="SecurityEntityId" Style="{StaticResource labelCaptionStyle}">
+									</Label>
+									<Label IsVisible="false" Text="{Binding AccountEntityID}" Style="{StaticResource labelContentStyle}">
+									</Label>
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Assign Action" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.AssignAction">
+	<ContentPage.BindingContext>
+		<local:VMAssignAction />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+			<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+				<Grid Padding="10" HorizontalOptions="CenterAndExpand">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="70">
+						</RowDefinition>
+						<RowDefinition Height="50">
+						</RowDefinition>
+						<RowDefinition Height="50">
+						</RowDefinition>
+						<RowDefinition Height="50">
+						</RowDefinition>
+						<RowDefinition Height="50">
+						</RowDefinition>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="100">
+						</ColumnDefinition>
+						<ColumnDefinition Width="130">
+						</ColumnDefinition>
+						<ColumnDefinition Width="*">
+						</ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Label Grid.Row="0" Grid.Column="0" Text="What is to be done?">
+					</Label>
+					<Editor x:Name="txtAction" Text="{Binding PWhatIsToBeDone}" HeightRequest="70" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnableWhat}">
+					</Editor>
+					<Label Grid.Row="1" Grid.Column="0" Text="By When" YAlign="Center">
+					</Label>
+					<DatePicker x:Name="dtpActionDate" Grid.Row="1" Format="yyyy-MM-dd" Grid.Column="1" HorizontalOptions="FillAndExpand" Date="{Binding PByWhenDt}" IsEnabled="{Binding IsEnableWhen}">
+						<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+					</DatePicker>
+					<Label x:Name="lblPrimaryActionStakeholder" Grid.Row="2" Grid.Column="0" Text="Primary Action Stakeholder" YAlign="Center">
+					</Label>
+					<Picker x:Name="PrimaryActionStakeholderPicker" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" SelectedIndex="{Binding PASIndex}" IsEnabled="{Binding IsEnablePrimary}" />
+					<Button x:Name="btnSearchPAS" Grid.Row="2" BackgroundColor="Transparent" Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsEnablePriBtn}" />
+					<Label x:Name="lblSecondaryActionStakeholder" Grid.Row="3" Grid.Column="0" Text="Secondary Action Stakeholder" YAlign="Center">
+					</Label>
+					<Picker x:Name="SecondaryActionStakeholderPicker" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" SelectedIndex="{Binding SASIndex}" IsEnabled="{Binding IsEnableSecondry}" />
+					<Button x:Name="btnSearchSAS" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsEnableSecBtn}" />
+					<Label x:Name="lblInfoStakeholder" Grid.Row="4" Grid.Column="0" Text="Info Stakeholder" YAlign="Center">
+					</Label>
+					<Picker x:Name="InfoActionStakeholderPicker" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" SelectedIndex="{Binding IASIndex}" IsEnabled="{Binding IsEnableInfo}" />
+					<Button x:Name="btnSearchIS" BackgroundColor="Transparent" Text=". . ." HeightRequest="15" WidthRequest="70" Grid.Row="4" Grid.Column="2" TextColor="White" HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsEnableInfoBtn}" />
+				</Grid>
+			</StackLayout>
+			<StackLayout x:Name="AddMode" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
+				<Button x:Name="btnPrev" TextColor="White" Text="Previous" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnablePrev}" IsVisible="{Binding IsVisiblePrev}">
+				</Button>
+				<Button x:Name="btnNext" TextColor="White" Text="Next" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnableNext}" IsVisible="{Binding IsVisibleNext}">
+				</Button>
+			</StackLayout>
+			<StackLayout x:Name="EditMode" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5">
+				<Button x:Name="btnAddMore" TextColor="White" Text="Add More" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnableAddMore}" IsVisible="{Binding IsVisibleAddMore}">
+				</Button>
+				<Button x:Name="btnEdit" TextColor="White" Text="Edit" HorizontalOptions="FillAndExpand" Command="{Binding EditCommand}" IsEnabled="{Binding IsEnableEdit}" IsVisible="{Binding IsVisibleEdit}">
+				</Button>
+				<Button x:Name="btnDelete" TextColor="White" Text="Delete" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnableDelete}" IsVisible="{Binding IsVisibleDelete}">
+				</Button>
+				<Button x:Name="btnSave" TextColor="White" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" IsVisible="{Binding IsVisibleSave}">
+				</Button>
+				<Button x:Name="btnCancel" TextColor="White" Text="Cancel" HorizontalOptions="FillAndExpand" Command="{Binding CancelCommand}" IsEnabled="{Binding IsEnableCancel}" IsVisible="{Binding IsVisibleCancel}">
+				</Button>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

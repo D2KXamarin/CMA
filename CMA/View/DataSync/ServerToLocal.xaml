@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="CMA.ServerToLocal">
+	<ContentPage.BindingContext>
+		<local:VMServerToLocal />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<!--		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+			<ScrollView>-->
+		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Label x:Name="lblSelect_Branch" YAlign="Center"  FontSize="15" HorizontalOptions="FillAndExpand" FontAttributes="Bold" Text="Branch *">
+				</Label>
+				<Entry x:Name="txtBranchList" Text="{Binding PBranch}" TextColor="White" IsEnabled="false" Placeholder="Select Branch" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnSearchBranch" Text=". . ." HeightRequest="15" WidthRequest="50"  HorizontalOptions="EndAndExpand" />
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+<!--				<Label x:Name="lblCustomer"  FontSize="15"  FontAttributes="Bold" Text="Customer *">
+				</Label>-->
+				<Entry x:Name="txtcustomerFilter"  Placeholder="Search Customer" Text="{Binding PCustomerSearchValue}" HorizontalOptions="FillAndExpand" />
+<!--				<Button x:Name="btnSearchCustomer" Text="C" HeightRequest="15" WidthRequest="50"  HorizontalOptions="EndAndExpand" />-->
+			</StackLayout>
+
+				<Label x:Name="lblSelectedCustomer"  FontSize="15"  FontAttributes="Bold" HorizontalOptions="Center" Text="{Binding PSelectedCustomerCnt}" IsVisible="{Binding IsVisibleSelectedCustomerCnt}">
+				</Label>
+<!--			<StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5" >-->
+				<ListView x:Name="CustomerList" ItemsSource="{Binding PCustomerList}" RowHeight="50"  VerticalOptions="FillAndExpand">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid Padding="5">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="20">
+										</RowDefinition>
+										<RowDefinition Height="20">
+										</RowDefinition>
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*">
+										</ColumnDefinition>
+										<ColumnDefinition Width="30">
+										</ColumnDefinition>
+									</Grid.ColumnDefinitions>
+									<Label Grid.Row="0" Grid.Column="0" Text="{Binding CustomerID}">
+									</Label>
+									<Label Grid.Row="1" Grid.Column="0" Text="{Binding CustomerName}">
+									</Label>
+									<controls:CheckBox x:Name="chkIsCheched" Grid.RowSpan="2" Grid.Row="0" Grid.Column="1" Checked="{Binding IsCheched}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+<!--			</StackLayout>
+			<StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Padding="10">-->
+				<Button x:Name="btnOk" Text="Ok" HorizontalOptions="FillAndExpand" >
+				</Button>
+<!--				<Button x:Name="btnCancel" Text="Cancel" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsCancelButtonEnable}">
+				</Button>-->
+<!--			</StackLayout>-->
+		</StackLayout>
+		<!--				</ScrollView>
+		</StackLayout>-->
+	</ContentPage.Content>
+</ContentPage>

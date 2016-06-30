@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMA.Login"  xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Login">
+  
+  <ContentPage.BindingContext>
+		<local:VMLogin />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="Center" Orientation="Vertical">
+			<!--		<Label Text="LOG IN" BackgroundColor="Aqua" FontSize="30" TextColor="White" />-->
+			<Image Source="d2kt.png" WidthRequest="200" HeightRequest="100">
+			</Image>
+			<StackLayout VerticalOptions="Center" Orientation="Vertical">
+				<!--<Image Source="d2kt.png" WidthRequest="200" HeightRequest="100"></Image>-->
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Image Source="user.png" WidthRequest="52" HeightRequest="40">
+				</Image>
+				<Entry x:Name="txtUserName" Keyboard="Text" Placeholder="User Id" HorizontalOptions="FillAndExpand" Text="{Binding PUserID}" />
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Image Source="passw.png" WidthRequest="52" HeightRequest="40">
+				</Image>
+				<Entry x:Name="txtPassword" Placeholder="Password" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsPassordEnalble}" Text="{Binding PPassord}" IsPassword="{Binding PIsPassword}">
+				</Entry>
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<controls:CheckBox x:Name="check" Checked="{Binding PShowPassword}" IsEnabled="{Binding IsPassordEnalble }" />
+				<Label Text="Show Password" HorizontalOptions="StartAndExpand" FontSize="12" TextColor="White" />
+				<Label x:Name="forgetPasswordLabel" Text="Forgot Password?" FontSize="12" TextColor="White" />
+				<!--            	 <Label.GestureRecognizer >
+            		<TapGestureRecognizer Command="{Binding ForgetTapped}"></TapGestureRecognizer>
+            	</Label.GestureRecognizer>
+            </Label>-->
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout>
+			</StackLayout>
+			<StackLayout Padding="20">
+				<Button x:Name="btnLogin" HorizontalOptions="FillAndExpand" Text="Sign In" BackgroundColor="Aqua" IsEnabled="{Binding IsLoginEnalble}" />
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

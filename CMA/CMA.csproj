@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{E338C7A4-CAB3-4C53-B7AE-FC7BC7477BF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CMA</RootNamespace>
+    <AssemblyName>CMA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CMA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Login\VMChangePassword.cs" />
+    <Compile Include="ViewModel\Login\VMLogin.cs" />
+    <Compile Include="View\Common\CustomerList.xaml.cs">
+      <DependentUpon>CustomerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Common\VMCustomerList.cs" />
+    <Compile Include="View\Common\Operations.xaml.cs">
+      <DependentUpon>Operations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Common\CustomerListModel.cs" />
+    <Compile Include="Utility Class\Utility.cs" />
+    <Compile Include="Utility Class\WebApi.cs" />
+    <Compile Include="Utility Class\APIRequest.cs" />
+    <Compile Include="Utility Class\GlobalVariables.cs" />
+    <Compile Include="Model\Common\CustomerListRequestModel.cs" />
+    <Compile Include="ViewModel\Common\VMOperations.cs" />
+    <Compile Include="View\Details\RecoveryDetails.xaml.cs">
+      <DependentUpon>RecoveryDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Details\RecoveryDetailsRequestModel.cs" />
+    <Compile Include="ViewModel\Details\VMRecoveryDetails.cs" />
+    <Compile Include="Model\Common\CustomerDetailsRequestModel.cs" />
+    <Compile Include="Model\Common\CustomerDetailsResponseModel.cs" />
+    <Compile Include="Model\Common\CustomerDetailsModel.cs" />
+    <Compile Include="string\String.cs" />
+    <Compile Include="View\Details\CoBorrGuarDetails.xaml.cs">
+      <DependentUpon>CoBorrGuarDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Details\VMCoBorrGuarDetails.cs" />
+    <Compile Include="Model\Details\CoBorrGuarDetailsModel.cs" />
+    <Compile Include="View\Details\LoanDetails.xaml.cs">
+      <DependentUpon>LoanDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Details\VMLoanDetails.cs" />
+    <Compile Include="Model\Details\LoanDetailsModel.cs" />
+    <Compile Include="View\Details\SecurityDetails.xaml.cs">
+      <DependentUpon>SecurityDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Details\SecurityDetailsModel.cs" />
+    <Compile Include="ViewModel\Details\VMSecurityDetails.cs" />
+    <Compile Include="View\Login\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menu\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Menu\VMMasterPage.cs" />
+    <Compile Include="Model\Menu\MasterPageModel.cs" />
+    <Compile Include="View\Menu\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Menu\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\BranchList.xaml.cs">
+      <DependentUpon>BranchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Common\VMBranchList.cs" />
+    <Compile Include="Model\Common\BranchListModel.cs" />
+    <Compile Include="Model\Remark\ActionEventDiaryModel.cs" />
+    <Compile Include="View\Remark\RemarkTabbedPage.xaml.cs">
+      <DependentUpon>RemarkTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Common\StatusResultModel.cs" />
+    <Compile Include="Interface\ISQLite.cs" />
+    <Compile Include="Database\SQLiteDatabase.cs" />
+    <Compile Include="ViewModel\Common\VMCommon.cs" />
+    <Compile Include="View\Common\AccountList.xaml.cs">
+      <DependentUpon>AccountList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Common\VMAccountList.cs" />
+    <Compile Include="View\Remark\InstitutionalMemoryDiary.xaml.cs">
+      <DependentUpon>InstitutionalMemoryDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMInstitutionalMemoryDiary.cs" />
+    <Compile Include="Model\Remark\DefaultStatusModel.cs" />
+    <Compile Include="Utility Class\APIDataSync.cs" />
+    <Compile Include="Model\Remark\RemarkInsertUpdateRequestModel.cs" />
+    <Compile Include="View\Remark\ViewPreviousRemark.xaml.cs">
+      <DependentUpon>ViewPreviousRemark.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMViewPreviousRemark.cs" />
+    <Compile Include="Model\Remark\ViewPreviousRemarkModel.cs" />
+    <Compile Include="View\Remark\StakeholderList.xaml.cs">
+      <DependentUpon>StakeholderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Remark\CustomerReallocation.xaml.cs">
+      <DependentUpon>CustomerReallocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMCustomerReallocation.cs" />
+    <Compile Include="ViewModel\Remark\VMStakeholderList.cs" />
+    <Compile Include="Model\Remark\StakeholderListModel.cs" />
+    <Compile Include="Model\Remark\CustomerReallocationModel.cs" />
+    <Compile Include="View\Remark\ActionEventDiaryList.xaml.cs">
+      <DependentUpon>ActionEventDiaryList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMActionEventDiaryList.cs" />
+    <Compile Include="ViewModel\Remark\VMActionEventDiary.cs" />
+    <Compile Include="View\Remark\ActionEventDiary.xaml.cs">
+      <DependentUpon>ActionEventDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Remark\ActionEventModel.cs" />
+    <Compile Include="View\Details\DetailsTabbedPage.xaml.cs">
+      <DependentUpon>DetailsTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility Class\DataSync.cs" />
+    <Compile Include="View\Remark\AssignAction.xaml.cs">
+      <DependentUpon>AssignAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMAssignAction.cs" />
+    <Compile Include="View\Remark\AssignActionStakeholderList.xaml.cs">
+      <DependentUpon>AssignActionStakeholderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Remark\VMAssignActionStakeholderList.cs" />
+    <Compile Include="Model\Remark\AssignActionModel.cs" />
+    <Compile Include="Model\DataSync\DataSyncModel.cs" />
+    <Compile Include="View\DataSync\ServerToLocal.xaml.cs">
+      <DependentUpon>ServerToLocal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DataSync\VMServerToLocal.cs" />
+    <Compile Include="View\DataSync\CustomerListDataSync.xaml.cs">
+      <DependentUpon>CustomerListDataSync.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DataSync\VMCustomerListDataSync.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="XLabs.Core">
+      <HintPath>..\packages\XLabs.Core.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCL.raw">
+      <HintPath>..\packages\SQLitePCL.raw.0.8.6\lib\portable-net45+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.1.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\packages\XLabs.IoC.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\packages\XLabs.Platform.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\packages\XLabs.Forms.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8\XLabs.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Login\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\AssignAction.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\AssignActionStakeholderList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DataSync\ServerToLocal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DataSync\CustomerListDataSync.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Common\CustomerList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Operations.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\RecoveryDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\CoBorrGuarDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\LoanDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\SecurityDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Menu\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Menu\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Menu\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\BranchList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\RemarkTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\AccountList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\InstitutionalMemoryDiary.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\ViewPreviousRemark.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\StakeholderList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\CustomerReallocation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\ActionEventDiaryList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Remark\ActionEventDiary.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\DetailsTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Login\ChangePassword.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\DataSync\" />
+    <Folder Include="Model\DataSync\" />
+    <Folder Include="View\DataSync\" />
+  </ItemGroup>
+</Project>

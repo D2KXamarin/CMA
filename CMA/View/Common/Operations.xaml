@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.Operations" Title="Operations" Icon="icon.png" xmlns:local="clr-namespace:CMA;assembly=CMA">
+	<ContentPage.BindingContext>
+		<local:VMOperations />
+	</ContentPage.BindingContext>
+
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+			<ScrollView>
+				<StackLayout>
+					<StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+						<ActivityIndicator Color="Black" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+						</ActivityIndicator>
+					</StackLayout>
+					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="80" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="90" />
+							   
+							</Grid.ColumnDefinitions>
+							<Label x:Name="lblSelect_Branch " Grid.Row="1" Grid.Column="0" FontSize="12" HorizontalOptions="FillAndExpand" YAlign="Center" FontAttributes="Bold"  Text="Branch *">
+							</Label>
+							<Entry x:Name="txtBranchList" Text="{Binding PBranch}" TextColor="White" IsEnabled="false" Grid.Row="1" Grid.Column="1" Placeholder="Select Branch" HorizontalOptions="FillAndExpand" />
+							<Button x:Name="btnSearchBranch" Text=". . ." HeightRequest="15" WidthRequest="50" Grid.Row="1" Grid.Column="2"  HorizontalOptions="EndAndExpand" IsVisible="{Binding IsVisibleBranchBtn}" />
+
+
+							<Label x:Name="lblSelectCustomer " Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="12" HorizontalOptions="FillAndExpand" YAlign="Center"  Text="Customer *">
+							</Label>
+							<Entry x:Name="txtCustomerList" Text="{Binding PCustomer}" TextColor="White" IsEnabled="false" Grid.Row="3" Grid.Column="1" Placeholder="Select Customer" HorizontalOptions="FillAndExpand" />
+							<Button x:Name="btnCustomerList" Text=". . ." IsEnabled="{Binding IsEnableCustomer }" HeightRequest="10" WidthRequest="50" Grid.Row="3" Grid.Column="2" 
+								HorizontalOptions="End" />
+
+
+							<Label x:Name="lblSelectACID " Grid.Row="5" Grid.Column="0" FontSize="12" HorizontalOptions="FillAndExpand" YAlign="Center" FontAttributes="Bold"  Text="Account ID">
+							</Label>
+							<Entry x:Name="txtACID" Text="{Binding PAccountNo}" IsEnabled="false" TextColor="White" Grid.Row="5" Grid.Column="1" Placeholder="Select ACID" HorizontalOptions="FillAndExpand" />
+						    <Button x:Name="btnACIDClear" Text="X" TextColor="Red" HeightRequest="15" Grid.Row="5" HorizontalOptions="StartAndExpand" Grid.Column="2" WidthRequest="30"  IsVisible="{Binding IsVisibleAcid }" />
+							<Button x:Name="btnACID" Text=". . ." HeightRequest="15" Grid.Row="5" Grid.Column="2" WidthRequest="50" Command="{Binding SearchButton}" IsEnabled="{Binding IsEnableAcid }" 
+								HorizontalOptions="EndAndExpand" />
+
+							</Grid>
+						<StackLayout>
+						</StackLayout>
+						<StackLayout>
+						</StackLayout>
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+							<Button x:Name="btnOk"  Text="OK" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsChangeButtonEnable}">
+							</Button>
+							<Button x:Name="btnCancel"  Text="Cancel"  HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsCancelButtonEnable}">
+							</Button>
+						</StackLayout>
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

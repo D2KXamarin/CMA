@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:local="clr-namespace:CMA;assembly=CMA" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="Loan Details"
+x:Class="CMA.LoanDetails"  
+>
+	<ContentPage.BindingContext>
+		<local:VMLoanDetails />
+	</ContentPage.BindingContext>
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelCaptionStyle" TargetType="Label">
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style x:Key="labelContentStyle" TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center" >
+			</ActivityIndicator>
+			<ScrollView>
+			<ListView x:Name="lvLoanDetails" ItemsSource="{Binding PLoanDetailsList}" RowHeight="275">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="10" HorizontalOptions="CenterAndExpand">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100">
+									</ColumnDefinition>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+								</Grid.ColumnDefinitions>
+
+								<Label Grid.Row="0" Grid.Column="0" Text="AC Id:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+
+								<Label Grid.Row="0" Grid.Column="1" Text="{Binding AcId}" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label IsVisible="false" Text="Account Entity Id:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label IsVisible="false" Text="{Binding AccountEntityID }" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="1" Grid.Column="0"  Text="Fac:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="1" Grid.Column="1" Text="{Binding Fac}" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="2" Grid.Column="0"  Text="Limit:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="2" Grid.Column="1" Text="{Binding Limit}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="3" Grid.Column="0"  Text="Balance Outstanding:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="3" Grid.Column="1" Text="{Binding Bal_OS}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="4" Grid.Column="0"  Text="Irregular_Since:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="4" Grid.Column="1" Text="{Binding Irregular_Since}" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="5" Grid.Column="0"  Text="CAD:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="5" Grid.Column="1" Text="{Binding CAD}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="6" Grid.Column="0"  Text="CADU:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="6" Grid.Column="1" Text="{Binding CADU}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="7" Grid.Column="0"  Text="Overdue Amount:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="7" Grid.Column="1" Text="{Binding OverdueAmt}" HorizontalOptions="EndAndExpand" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+								<Label Grid.Row="8" Grid.Column="0"  Text="Reason:" Style="{StaticResource labelCaptionStyle}">
+								</Label>
+								<Label Grid.Row="8" Grid.Column="1" Text="{Binding Reason}" Style="{StaticResource labelContentStyle}">
+								</Label>
+
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			</ScrollView>
+			</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

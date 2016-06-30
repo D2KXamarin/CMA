@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.InstitutionalMemoryDiary" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:local="clr-namespace:CMA;assembly=CMA" Icon="icon.png" Title="IMS">
+	<ContentPage.BindingContext>
+		<local:VMInstitutionalMemoryDiary />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+	</ContentPage.Content>
+	<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="40" />
+					<RowDefinition Height="40" />
+					<RowDefinition Height="40" />
+					<RowDefinition Height="70" />
+					<RowDefinition Height="40" />
+					<RowDefinition Height="40" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="100" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Label Text="Account Level" YAlign="Center" Grid.Row="0" Grid.Column="0" />
+				<controls:CheckBox x:Name="checkAccountLevel" Grid.Row="0" Grid.Column="1" Checked="{Binding PAccountLevel}" />
+				<Label Text="Account ID" Grid.Row="1" Grid.Column="0" />
+				<Picker x:Name="pickerAccountID" Title="Account ID" HorizontalOptions="FillAndExpand" SelectedIndex="{Binding PAccountID}" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding PAccountLevel}" />
+				<Label Text="Remark *" Grid.Row="2" Grid.Column="0" />
+				<Picker x:Name="pickerDefaultStatus" Title="Default Status" HorizontalOptions="FillAndExpand" SelectedIndex="{Binding PDefaultStatus}" Grid.Row="2" Grid.Column="1" />
+				<Editor x:Name="txtRemark" Text="{Binding PRemark}" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1">
+				</Editor>
+				<Button x:Name="btnSaveRemark" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsEnableSave}">
+				</Button>
+			</Grid>
+		</StackLayout>
+	</StackLayout>
+</ContentPage>
