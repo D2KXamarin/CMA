@@ -3,7 +3,6 @@
 	<ContentPage.BindingContext>
 		<local:VMOperations />
 	</ContentPage.BindingContext>
-
 	<ContentPage.Content>
 		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
 			<ScrollView>
