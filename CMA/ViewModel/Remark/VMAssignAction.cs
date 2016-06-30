@@ -440,7 +440,7 @@ namespace CMA
 						CurrentMode = "ADD";
 					} else {
 						PAssignActionList = new ObservableCollection<AssignActionModel> (responseModelList.AssignAction);
-						CurrentIndex = 0;
+						//CurrentIndex = 0;
 						CurrentMode = "EDIT";
 					}
 				} catch {
@@ -511,10 +511,10 @@ namespace CMA
 
 			if (CurrentMode == "ADD") {
 				IsEnableAddMore = !flag;
-			} else {
-				IsEnableEdit = !flag;
-
-			}
+			} else if(GlobalVariables.RemarkStatusKey==20){
+					IsEnableEdit = !flag;
+					IsEnableDelete = !flag;
+				}
 		}
 
 		public void ClearAll()
@@ -538,6 +538,10 @@ namespace CMA
 				return false;
 			} else if (PInfoStakeholder.Count == 0) {
 				GlobalVariables.DisplayMessage = "Please Select Minimum One Info Stakeholder";
+				return false;
+			}
+			else if (PByWhenDt < DateTime.Today) {
+				GlobalVariables.DisplayMessage = "Assign action date cannot be less than current date";
 				return false;
 			}
 

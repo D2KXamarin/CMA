@@ -18,6 +18,7 @@ namespace CMA
 		public static string DisplayMessage=string.Empty;
 		public static int DetailsIndex = 0;
 		public static string RemarkID = "25";
+		public static int RemarkStatusKey=20;
 		public static string StakeholderType = string.Empty;
 		public static int AssignActionID= 0;
 	}

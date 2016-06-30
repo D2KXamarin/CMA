@@ -39,11 +39,15 @@ namespace CMA
 
 			btnNext.Clicked += (object sender, EventArgs e) => {
 				(BindingContext as VMAssignAction).CurrentIndex++;
+				VMAssignAction vm = BindingContext as VMAssignAction;
+				vm.LoadAssignActionStakeholderList ();
 				LoadAssignAction ();
 			};
 
 			btnPrev.Clicked += (object sender, EventArgs e) => {
 				(BindingContext as VMAssignAction).CurrentIndex--;
+				VMAssignAction vm = BindingContext as VMAssignAction;
+				vm.LoadAssignActionStakeholderList ();
 				LoadAssignAction ();
 			};
 
@@ -52,11 +56,23 @@ namespace CMA
 				VMAssignAction vm = BindingContext as VMAssignAction;
 				vm.ClearAll ();
 				vm.ChangeControlsState (true);
-
 				this.PrimaryActionStakeholderPicker.Items.Clear ();
 				this.SecondaryActionStakeholderPicker.Items.Clear ();
 				this.InfoActionStakeholderPicker.Items.Clear ();
+				GlobalVariables.AssignActionID++;
 
+
+			};
+
+			btnCancel.Clicked += (object sender, EventArgs e) => {
+				VMAssignAction vm = BindingContext as VMAssignAction;
+				if (vm.CurrentMode=="ADD") {
+					this.txtAction.Text = "";
+					this.dtpActionDate.Date = DateTime.Now;
+					this.PrimaryActionStakeholderPicker.Items.Clear ();
+					this.SecondaryActionStakeholderPicker.Items.Clear ();
+					this.InfoActionStakeholderPicker.Items.Clear ();
+				}
 			};
 		}
 
