@@ -11,7 +11,20 @@ namespace CMA
 		public Operations ()
 		{
 			InitializeComponent ();
+			clearall ();
 
+			VMOperations vma = BindingContext as VMOperations;
+			if (GlobalVariables.UserLocation == "BO") {
+				GlobalVariables.BranchCode = GlobalVariables.UserLocationCode;
+				GlobalVariables.BranchName = GlobalVariables.UserLocationName;
+				string CurrentBranch = GlobalVariables.BranchCode + "-" + GlobalVariables.UserLocationName;
+				if (!string.IsNullOrEmpty (GlobalVariables.BranchCode.Trim ()) && CurrentBranch != vma.PBranch) {
+					vma.PBranch = CurrentBranch;
+					vma.IsVisibleBranchBtn = false;
+				}
+			}
+			else
+				vma.IsVisibleBranchBtn = true;
 
 			btnSearchBranch.Clicked += async (object sender, EventArgs e) => {
 				await Navigation.PushAsync (new BranchList ());
@@ -60,6 +73,16 @@ namespace CMA
 				vm = null;
 			};
 
+		}
+		public void clearall(){
+			VMOperations vm=BindingContext as VMOperations;
+			if (GlobalVariables.BranchCode == null) {
+				vm.PBranch = "";
+			} if (GlobalVariables.CustomerID == null) {
+				vm.PCustomer = "";
+			} if (GlobalVariables.AccountID == null) {
+				vm.PAccountNo = "";
+			}
 		}
 
 

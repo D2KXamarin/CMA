@@ -11,6 +11,7 @@ namespace CMA
     {
         private string webLinkHost = "http://103.1.114.64:8011/CMAAPI/";
 //        private HttpClient _client;
+		public readonly string webLogin;
         public readonly string webLinkBranchList;
 
         public readonly string webLinkCustomerList;
@@ -40,6 +41,8 @@ namespace CMA
 
         private WebAPI()
         {
+			webLogin = webLinkHost + "CrisMAc/LoginAuth/";
+
             webLinkBranchList = webLinkHost + "CrisMAc/App_GetBranchList";
 
             webLinkCustomerList = webLinkHost + "CrisMAc/APP_GetCustomeList";

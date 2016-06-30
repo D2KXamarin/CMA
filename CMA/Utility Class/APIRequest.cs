@@ -29,6 +29,20 @@ namespace CMA
 			}
 		}
 		#endregion
+		public async Task<string> Login (LoginRequestModel loginRequestModel)
+		{
+			//Prepare the Content that is to be sent to the Web Service after converting the object into JSON
+			string content = JsonConvert.SerializeObject (loginRequestModel);
+
+			string URL = WebAPI.Instance.webLogin + "/" + content.ToEncrypt ();
+
+			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+
+			if (result != null)
+				return result.Replace("\"","").ToDecrypt ();
+
+			return result;
+		}
 
 		public async Task<string> GetInventoryList (BranchListRequestModel branchListRequestModel)
 		{

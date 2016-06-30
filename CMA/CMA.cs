@@ -8,10 +8,10 @@ namespace CMA
 	{
 		public App ()
 		{
-			//MainPage = new NavigationPage(new ServerToLocal());;
+			MainPage = new NavigationPage(new Login());
 
 			GlobalVariables.IsOffline = SQLiteDatabase.Instance.IsDataInLocal ();
-			MainPage = new MenuPage ();
+//			MainPage = new MenuPage ();
 		}
 
 		protected override void OnStart ()

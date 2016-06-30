@@ -8,6 +8,7 @@ namespace CMA
 {
 	public partial class CustomerReallocation: ContentPage
 	{
+		int GetAction=0;
 		public CustomerReallocation ()
 		{
 			InitializeComponent ();
@@ -24,6 +25,22 @@ namespace CMA
 				GlobalVariables.StakeholderType = "I";
 				await Navigation.PushAsync (new StakeholderList ());
 			};
+			btnCancel.Clicked += async (object sender, EventArgs e) => {
+				GetAction=0;
+				LoadData();
+			};
+		
+		}
+		public async Task LoadValidData(){
+			if (GlobalVariables.CustomerEntityID != null) {
+				LoadData ();
+			} else {
+				await DisplayAlert("","Please Select Branch & Customer","Ok");
+				GetAction = 0;
+				Navigation.PushAsync(new Operations ());
+
+
+			}
 		}
 
 		public async Task LoadData ()
@@ -32,17 +49,13 @@ namespace CMA
 			await vm.LoadStakeholderList ();
 
 		}
-
-		protected override void OnAppearing ()
+		void LoadAssignAction ()
 		{
-			base.OnAppearing ();
-
 			try {
 				VMCustomerReallocation vm = BindingContext as VMCustomerReallocation;
 				vm.AllotedStakeholderList ();
 
 				if (vm != null) {
-
 					this.PrimaryActionStakeholderPicker.Items.Clear ();
 					vm.strPriStakeholder = "";
 					if (vm.PPriActionStakeholder != null) {
@@ -51,11 +64,10 @@ namespace CMA
 							vm.strPriStakeholder += "," + currentValue.UserLoginId;
 						}
 						PrimaryActionStakeholderPicker.SelectedIndex = 0;
-
-						vm.strPriStakeholder = vm.strPriStakeholder.Remove (0, 1);
+						if(vm.strPriStakeholder!=""){
+							vm.strPriStakeholder = vm.strPriStakeholder.Remove (0, 1);
+						}
 					}
-
-
 
 					this.SecondaryActionStakeholderPicker.Items.Clear ();
 					vm.strSecStakeholder = "";
@@ -65,10 +77,10 @@ namespace CMA
 							vm.strSecStakeholder += "," + currentValue.UserLoginId;
 						}
 						SecondaryActionStakeholderPicker.SelectedIndex = 0;
-						vm.strSecStakeholder = vm.strSecStakeholder.Remove (0, 1);
+						if(vm.strSecStakeholder!=""){
+							vm.strSecStakeholder = vm.strSecStakeholder.Remove (0, 1);
+						}
 					}
-
-
 
 					this.InfoActionStakeholderPicker.Items.Clear ();
 					vm.strInfoStakeholder = "";
@@ -79,12 +91,27 @@ namespace CMA
 							vm.strInfoStakeholder += "," + currentValue.UserLoginId;
 						}
 						InfoActionStakeholderPicker.SelectedIndex = 0;	
-						vm.strInfoStakeholder = vm.strInfoStakeholder.Remove (0, 1);
+						if(vm.strInfoStakeholder!=""){
+							vm.strInfoStakeholder = vm.strInfoStakeholder.Remove (0, 1);
+						}
 					}
 
 				}
 			} catch {
 			}
+		}
+
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+
+			if (GetAction == 2) {
+				LoadAssignAction ();
+
+			} else {
+				LoadValidData ();
+			}
+
 			MessagingCenter.Subscribe<VMCustomerReallocation> (this, Strings.CustomerReallocationSuccess, async (VMCustomerReallocation sender) => {
 				await DisplayAlert ("", "Saved Successfully", "OK");	
 			});
