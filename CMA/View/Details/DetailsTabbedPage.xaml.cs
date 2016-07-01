@@ -11,8 +11,6 @@ namespace CMA
 		{
 			InitializeComponent ();
 
-
-		
 			ToolMenuList.Clicked += async (object sender, EventArgs e) => {
 				await this.Navigation.PushAsync (new Operations ());
 			};
@@ -29,6 +27,12 @@ namespace CMA
 			CurrentPage = this.Children [GlobalVariables.DetailsIndex];
 			this.Title = CurrentPage.Title;
 
+		}
+
+		protected override bool OnBackButtonPressed ()
+		{
+			((MasterDetailPage)Application.Current.MainPage).IsPresented = true;
+			return true;
 		}
 	}
 }

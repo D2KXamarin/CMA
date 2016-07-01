@@ -103,9 +103,9 @@ namespace CMA
 					if (actionEventUpdate.Status == 20)
 						Status = "Allotted";
 					else if (actionEventUpdate.Status == 30)
-						Status ="In Process";
+						Status = "In Process";
 					else if (actionEventUpdate.Status == 10)
-						Status ="Done";
+						Status = "Done";
 					
 					listActionEventDiary.Where (item => item.EventID == EventId).ToList () [0].Status = Status;
 				}
@@ -124,18 +124,18 @@ namespace CMA
 
 				List<ActionEventModel> listActionEventDiary = null;
 				listActionEventDiary = (from ActionEventDairy in dataSyncActionDetailsModel.ActionEventDiaryDetails
-				        where ActionEventDairy.EventID.ToString () == GlobalVariables.RemarkID
-				        select ActionEventDairy).ToList ();
+				                        where ActionEventDairy.EventID.ToString () == GlobalVariables.RemarkID
+				                        select ActionEventDairy).ToList ();
 
 				foreach (ActionEventUpdate actionEventUpdate in SQLiteDatabase.Instance.DataSyncGetActionEvent(GlobalVariables.RemarkID)) {
 					int EventId = actionEventUpdate.EventID;
 
 					ActionEventModel AEU = listActionEventDiary.Where (item => item.EventID == EventId).ToList () [0];
 
-					AEU.Status = actionEventUpdate.Status.ToString();
+					AEU.Status = actionEventUpdate.Status.ToString ();
 					AEU.CommencementDate = actionEventUpdate.CommencementDt;
 					AEU.CommenceComment = actionEventUpdate.CommencementRemark;
-					AEU.ClosureDate =actionEventUpdate.ClosureDt;
+					AEU.ClosureDate = actionEventUpdate.ClosureDt;
 					AEU.ClosureComment = actionEventUpdate.ClosureRemark;
 
 				}
@@ -223,9 +223,19 @@ namespace CMA
 			} catch {
 				return false;
 			}
-
 		}
 
+		public class LocalToServerDataSync
+		{
+			public LocalToServerDataSync ()
+			{
+				
+			}
 
+//			public async Task<bool> Process (List<ActionEventUpdate> listCustomer)
+//			{
+//				
+//			}
+		}
 	}
 }

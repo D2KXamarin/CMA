@@ -47,6 +47,12 @@ namespace CMA
 			}
 			OnLoadStatus = 0;
 		}
+
+		protected override bool OnBackButtonPressed ()
+		{
+			((MasterDetailPage)Application.Current.MainPage).IsPresented = true;
+			return true;
+		}
 	}
 }
 
