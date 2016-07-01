@@ -11,6 +11,7 @@ namespace CMA
 			MainPage = new NavigationPage(new Login());
 
 			GlobalVariables.IsOffline = SQLiteDatabase.Instance.IsDataInLocal ();
+//			MainPage = new MenuPage ();
 		}
 
 		protected override void OnStart ()
