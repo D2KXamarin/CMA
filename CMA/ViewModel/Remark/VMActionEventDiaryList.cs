@@ -25,7 +25,7 @@ namespace CMA
 
 		public VMActionEventDiaryList ()
 		{
-			LoadActionEventDiaryList ();
+//			LoadActionEventDiaryList ();
 		}
 
 		private ObservableCollection <ActionEventDiaryListModel> _PRemarkDetailsList;

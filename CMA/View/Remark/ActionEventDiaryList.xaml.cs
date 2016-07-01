@@ -7,6 +7,7 @@ namespace CMA
 {
 	public partial class ActionEventDiaryList : ContentPage
 	{
+		int OnLoadFlag = 0;
 		public ActionEventDiaryList ()
 		{
 			InitializeComponent ();
@@ -15,6 +16,7 @@ namespace CMA
 			{
 				ActionEventDiaryListModel C = (ActionEventDiaryListModel)RemarkDetailsList.SelectedItem;
 				GlobalVariables.RemarkID= C.EventID;
+				OnLoadFlag = 1;
 				this.Navigation.PushAsync (new ActionEventDiary ());
 			};
 		}
@@ -24,6 +26,11 @@ namespace CMA
 			base.OnAppearing ();
 
 			GlobalVariables.DetailsIndex = 2;
+			if (OnLoadFlag == 0 ) {
+				VMActionEventDiaryList vm = BindingContext as VMActionEventDiaryList;
+				vm.LoadActionEventDiaryList();
+			}
+			OnLoadFlag = 0;
 		}
 	}
 }

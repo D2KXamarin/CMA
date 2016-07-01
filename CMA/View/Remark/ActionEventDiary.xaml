@@ -23,7 +23,7 @@
 							</Grid.ColumnDefinitions>
 							<Label Text="Assigned Action" Grid.Row="0" Grid.Column="0" YAlign="Center">
 							</Label>
-							<Editor x:Name="TxtAssignedAction" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PAssignedAction}">
+							<Editor x:Name="TxtAssignedAction" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PAssignedAction}" IsEnabled="false">
 							</Editor>
 							<Label Text="Status" Grid.Row="1" Grid.Column="0">
 							</Label>
@@ -40,7 +40,7 @@
 							</Editor>
 							<Label Text="Closure Date" Grid.Row="4" Grid.Column="0">
 							</Label>
-							<DatePicker x:Name="DtPClosureDate" Grid.Row="4" Grid.Column="1" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PCloserDate}" IsEnabled="{Binding IsEnalbleClosureDate}">
+							<DatePicker x:Name="DtPClosureDate" Grid.Row="4" Grid.Column="1" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PClosureDate}" IsEnabled="{Binding IsEnalbleClosureDate}">
 								<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
 							</DatePicker>
 							<Label Text="Closure Comment" Grid.Row="5" Grid.Column="0">
@@ -50,11 +50,10 @@
 						</Grid>
 					</StackLayout>
 					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20">
-						<Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}">
+						<Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" IsVisible="{Binding IsVisibleSave}">
 						</Button>
-						<Button x:Name="btnEdit" Text="Edit" HorizontalOptions="FillAndExpand" Command="{Binding EditCommand}">
-						</Button>
-						<Button x:Name="btnRemove" Text="Cancel" HorizontalOptions="FillAndExpand">
+					
+						<Button x:Name="btnCancle" Text="Cancel" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleCancle}">
 						</Button>
 					</StackLayout>
 				</StackLayout>

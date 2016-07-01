@@ -45,7 +45,7 @@ namespace CMA
 				CurrentPage = this.Children [GlobalVariables.DetailsIndex];
 				this.Title = CurrentPage.Title;
 			}
-			OnLoadStatus = 1;
+			OnLoadStatus = 0;
 		}
 	}
 }
