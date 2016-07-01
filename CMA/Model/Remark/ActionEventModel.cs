@@ -41,6 +41,7 @@ namespace CMA
 		[PrimaryKey]
 		public int EventID { get; set; }
 		public string RemarkID { get; set; }
+		public string UserLoginID { get; set; }
 
 		public int Status  { get; set; }
 		public string CommencementDt { get; set; }

@@ -39,14 +39,14 @@ namespace CMA
 				await Navigation.PushAsync (new StakeholderList ());
 			};
 			btnCancel.Clicked += async (object sender, EventArgs e) => {
-				await DisplayAlert("","Do You Want To Cancel","Ok");
+				await DisplayAlert("Alert!","Do You Want To Cancel","Yes","No");
 
 				GetAction=0;
 				LoadData();
 			};
 		}
 		public async Task LoadValidData(){
-			if (GlobalVariables.CustomerEntityID != null) {
+			if (GlobalVariables.CustomerEntityID !="" && GlobalVariables.CustomerEntityID !=null) {
 				LoadData ();
 			} else {
 				await DisplayAlert("","Please Select Branch & Customer","Ok");
@@ -134,9 +134,9 @@ namespace CMA
 				await DisplayAlert ("", "Saved Successfully", "OK");	
 			});
 			MessagingCenter.Subscribe<VMCustomerReallocation> (this, Strings.Display_Message, async (VMCustomerReallocation sender) => {
-				{
-					await DisplayAlert ("Alert", GlobalVariables.DisplayMessage, "OK");
-				}
+
+				 DisplayAlert ("Alert", GlobalVariables.DisplayMessage, "OK");
+			
 			});
 
 		}
@@ -144,6 +144,8 @@ namespace CMA
 		protected override void OnDisappearing ()
 		{
 			MessagingCenter.Unsubscribe<VMCustomerReallocation> (this, Strings.CustomerReallocationSuccess);
+			MessagingCenter.Unsubscribe<VMCustomerReallocation> (this, Strings.Display_Message);
+
 			base.OnDisappearing ();
 		}
 

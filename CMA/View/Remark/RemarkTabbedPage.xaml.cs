@@ -45,7 +45,13 @@ namespace CMA
 				CurrentPage = this.Children [GlobalVariables.DetailsIndex];
 				this.Title = CurrentPage.Title;
 			}
-			OnLoadStatus = 1;
+			OnLoadStatus = 0;
+		}
+
+		protected override bool OnBackButtonPressed ()
+		{
+			((MasterDetailPage)Application.Current.MainPage).IsPresented = true;
+			return true;
 		}
 	}
 }

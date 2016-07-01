@@ -13,21 +13,34 @@ namespace CMA
 		{
 			InitializeComponent ();
 
-			LoadData ();
+			ActionLoadData ();
+			ValidateDate ();
+			btnCancle.Clicked += async (object sender, EventArgs e) => {
+				await Navigation.PopAsync ();	
+			};
+		}
+		public void ValidateDate(){
+			DtPCommencementDate.SetValue (DatePicker.MaximumDateProperty, DateTime.Now.AddDays (1));
+			DtPCommencementDate.SetValue (DatePicker.MinimumDateProperty, DateTime.Now.AddDays (-2));
+			DtPClosureDate.SetValue (DatePicker.MaximumDateProperty, DateTime.Now.AddDays (1));
+			DtPClosureDate.SetValue (DatePicker.MinimumDateProperty, DateTime.Now.AddDays (-2));
+
+	
 		}
 
-		public async Task LoadData()
+
+	public async Task ActionLoadData()
+	{
+		VMActionEventDiary vm = BindingContext as VMActionEventDiary;
+		await vm.LoadActionDiary ();
+
+		foreach(EventStatusModel ESV in vm.StatusMaster)
 		{
-			VMActionEventDiary vm = BindingContext as VMActionEventDiary;
-			await vm.LoadActionDiary ();
-
-			foreach(EventStatusModel ESV in vm.StatusMaster)
-			{
-				pickerStatus.Items.Add(ESV.StatusValue);
-			}
-
-			pickerStatus.SelectedIndex = 0;
+			pickerStatus.Items.Add(ESV.StatusValue);
 		}
+
+		pickerStatus.SelectedIndex = 0;
+	}
 
 		protected override void OnAppearing ()
 		{
@@ -35,12 +48,18 @@ namespace CMA
 			MessagingCenter.Subscribe<VMActionEventDiary> (this, Strings.ActionEvent_Success, async (VMActionEventDiary sender) => {
 				{
 					await DisplayAlert("Success",Strings.ActionEvent_Success,"OK");
+					await	Navigation.PopAsync();
 				}
 			});
 
 			MessagingCenter.Subscribe<VMActionEventDiary> (this, Strings.ActionEvent__FAILURE, async (VMActionEventDiary sender) => {
 				{
-					await DisplayAlert ("Error", Strings.ActionEvent__FAILURE, "OK");
+					await DisplayAlert ("Error", GlobalVariables.DisplayMessage, "OK");
+				}
+			});
+			MessagingCenter.Subscribe<VMActionEventDiary> (this, Strings.Display_Message, async (VMActionEventDiary sender) => {
+				{
+					await DisplayAlert ("Alert!",GlobalVariables.DisplayMessage, "OK");
 				}
 			});
 

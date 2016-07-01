@@ -139,12 +139,13 @@ namespace CMA
 
 		protected override void OnDisappearing ()
 		{
+			
 			base.OnDisappearing ();
 		}
 
 		protected override bool OnBackButtonPressed ()
 		{
-			Application.Current.MainPage = new MenuPage ();
+			((MasterDetailPage)Application.Current.MainPage).IsPresented = true;
 			return true;
 		}
 
