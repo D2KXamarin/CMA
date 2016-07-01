@@ -8,28 +8,42 @@ namespace CMA
 {
 	public partial class CustomerReallocation: ContentPage
 	{
-		int GetAction=0;
+		int GetAction = 0;
 		public CustomerReallocation ()
 		{
 			InitializeComponent ();
-			LoadData ();
+			//			
+			GetAction=0;
+			//			LoadValidData ();
+
+			//			ToolMenuList.Clicked += (object sender, EventArgs e) => {
+			//				
+			//				Navigation.PushAsync (new Operations ());
+			//			
+			//			};
+
 			btnSearchPAS.Clicked += async (object sender, EventArgs e) => {
 				GlobalVariables.StakeholderType = "P";
+				GetAction=2;
 				await Navigation.PushAsync (new StakeholderList ());
+
 			};
 			btnSearchSAS.Clicked += async (object sender, EventArgs e) => {
 				GlobalVariables.StakeholderType = "S";
+				GetAction=2;
 				await Navigation.PushAsync (new StakeholderList ());
 			};
 			btnSearchIS.Clicked += async (object sender, EventArgs e) => {
 				GlobalVariables.StakeholderType = "I";
+				GetAction=2;
 				await Navigation.PushAsync (new StakeholderList ());
 			};
 			btnCancel.Clicked += async (object sender, EventArgs e) => {
+				await DisplayAlert("","Do You Want To Cancel","Ok");
+
 				GetAction=0;
 				LoadData();
 			};
-		
 		}
 		public async Task LoadValidData(){
 			if (GlobalVariables.CustomerEntityID != null) {
@@ -47,6 +61,7 @@ namespace CMA
 		{
 			VMCustomerReallocation vm = BindingContext as VMCustomerReallocation;
 			await vm.LoadStakeholderList ();
+			LoadAssignAction ();
 
 		}
 		void LoadAssignAction ()
@@ -92,7 +107,9 @@ namespace CMA
 						}
 						InfoActionStakeholderPicker.SelectedIndex = 0;	
 						if(vm.strInfoStakeholder!=""){
+
 							vm.strInfoStakeholder = vm.strInfoStakeholder.Remove (0, 1);
+
 						}
 					}
 
@@ -104,7 +121,6 @@ namespace CMA
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-
 			if (GetAction == 2) {
 				LoadAssignAction ();
 
@@ -112,8 +128,15 @@ namespace CMA
 				LoadValidData ();
 			}
 
+
+
 			MessagingCenter.Subscribe<VMCustomerReallocation> (this, Strings.CustomerReallocationSuccess, async (VMCustomerReallocation sender) => {
 				await DisplayAlert ("", "Saved Successfully", "OK");	
+			});
+			MessagingCenter.Subscribe<VMCustomerReallocation> (this, Strings.Display_Message, async (VMCustomerReallocation sender) => {
+				{
+					await DisplayAlert ("Alert", GlobalVariables.DisplayMessage, "OK");
+				}
 			});
 
 		}

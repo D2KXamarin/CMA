@@ -1,64 +1,68 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Customer Reallocation" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.CustomerReallocation">
-	<ContentPage.BindingContext>
-		<local:VMCustomerReallocation />
-	</ContentPage.BindingContext>
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style x:Key="labelCaptionStyle" TargetType="Label">
-				<Setter Property="FontAttributes" Value="Bold" />
-				<Setter Property="TextColor" Value="White" />
-				<Setter Property="FontSize" Value="12" />
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
-	<ContentPage.Content>
-		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="10">
-			<ScrollView>
-				<StackLayout>
-					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="50" />
-								<RowDefinition Height="50" />
-								<RowDefinition Height="50" />
-							</Grid.RowDefinitions>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="100" />
-								<ColumnDefinition Width="150" />
-								<ColumnDefinition Width="*" />
-							</Grid.ColumnDefinitions>
-							<Label x:Name="lblPrimaryActionStakeholder" Grid.Row="0" Grid.Column="0" Text="Primary Action Stakeholder" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
-							</Label>
-							<Picker x:Name="PrimaryActionStakeholderPicker" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" SelectedIndex="{Binding PStatusIndex}" IsEnabled="{Binding IsEnablePrimary}">
-							</Picker>
-							<Button x:Name="btnSearchPAS" Grid.Row="0" Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" />
-							<Label x:Name="lblSecondaryActionStakeholder" Grid.Row="1" Grid.Column="0" Text="Secondary Action Stakeholder" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
-							</Label>
-							<Picker x:Name="SecondaryActionStakeholderPicker" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding PStatusIndex}" IsEnabled="{Binding IsEnableSecondry}">
-							</Picker>
-							<Button x:Name="btnSearchSAS" Grid.Row="1" Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" />
-							<Label x:Name="lblInfoStakeholder" Grid.Row="2" Grid.Column="0" Text="Info Stakeholder" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
-							</Label>
-							<Picker x:Name="InfoActionStakeholderPicker" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding PStatusIndex}" IsEnabled="{Binding IsEnableInfo}">
-							</Picker>
-							<Button x:Name="btnSearchIS" Text=". . ." HeightRequest="15" WidthRequest="70" Grid.Row="2" Grid.Column="2" TextColor="White" HorizontalOptions="EndAndExpand" />
-						</Grid>
-						<StackLayout>
-						</StackLayout>
-						<StackLayout>
-						</StackLayout>
-						<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10">
-							<Button x:Name="btnEdit" Text="Edit" TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand">
-							</Button>
-							<Button x:Name="btnSave" Text="Save" TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Command="{Binding Save}">
-							</Button>
-							<Button x:Name="btnCancel" Text="Cancel" TextColor="White" FontAttributes="Bold" HorizontalOptions="StartAndExpand">
-							</Button>
-						</StackLayout>
-					</StackLayout>
-				</StackLayout>
-			</ScrollView>
-		</StackLayout>
-	</ContentPage.Content>
+<!--<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="ToolMenuList" Order="Primary" Icon="businessmanadd.png">
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>-->
+  <ContentPage.BindingContext>
+    <local:VMCustomerReallocation />
+  </ContentPage.BindingContext>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="labelCaptionStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="12" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+      <ScrollView>
+        <StackLayout>
+          <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="70" />
+              </Grid.ColumnDefinitions>
+              <Label x:Name="lblPrimaryActionStakeholder" Grid.Row="0" Grid.Column="0" Text="Primary Action Stakeholder*" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
+              </Label>
+              <Picker x:Name="PrimaryActionStakeholderPicker"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"  SelectedIndex="{Binding PStatusIndex}"  IsEnabled="{Binding IsEnablePrimary}" >
+              </Picker>
+
+              <Button x:Name="btnSearchPAS" Grid.Row="0"  Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" />
+              <Label x:Name="lblSecondaryActionStakeholder" Grid.Row="1" Grid.Column="0" Text="Secondary Action Stakeholder*" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
+              </Label>
+              <Picker x:Name="SecondaryActionStakeholderPicker"  HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"  SelectedIndex="{Binding PStatusIndex}"  IsEnabled="{Binding IsEnableSecondry}">
+              </Picker>
+              <Button x:Name="btnSearchSAS"  Grid.Row="1" Grid.Column="2" Text=". . ." HeightRequest="15" WidthRequest="70" TextColor="White" HorizontalOptions="EndAndExpand" />
+              <Label x:Name="lblInfoStakeholder" Grid.Row="2" Grid.Column="0" Text="Info Stakeholder*" YAlign="Center" Style="{StaticResource labelCaptionStyle}">
+              </Label>
+              <Picker x:Name="InfoActionStakeholderPicker"   HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"  SelectedIndex="{Binding PStatusIndex}"  IsEnabled="{Binding IsEnableInfo}">
+              </Picker>
+              <Button x:Name="btnSearchIS"  Text=". . ." HeightRequest="15" WidthRequest="70" Grid.Row="2" Grid.Column="2" TextColor="White" HorizontalOptions="EndAndExpand" />
+            </Grid>
+            <StackLayout>
+            </StackLayout>
+            <StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+
+              <Button x:Name="btnSave" Text="Save" TextColor="White"  FontAttributes="Bold" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}">
+              </Button>
+              <Button x:Name="btnCancel" Text="Cancel" TextColor="White" FontAttributes="Bold" HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEnableCancel}">
+              </Button>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>
