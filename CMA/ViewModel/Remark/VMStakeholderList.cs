@@ -70,9 +70,9 @@ namespace CMA
 		public void SaveStakeholderList ()
 		{
 			foreach (StakeholderListModel currobj in PStakeholderList) {	
-				if (currobj.IsAllocate) {
+//				if (currobj.IsAllocate) {
 					currobj.StakeholderType = currobj.IsAllocate ? GlobalVariables.StakeholderType : null;
-				}
+//				}
 			}
 
 			SQLiteDatabase.Instance.SaveStakeholder (PStakeholderList.ToList ()); 
