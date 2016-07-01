@@ -229,8 +229,8 @@ namespace CMA
 		}
 		public async Task<string> CustomerReAllocationUpdate(CustomerReallocationRequestModel customerReallocationRequestModel)
 		{
-			string URL = WebAPI.Instance.webLinkCustomerReAllocationUpdate + "/" + JsonConvert.SerializeObject(customerReallocationRequestModel).ToEncrypt ();
-			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+			string URL = WebAPI.Instance.webLinkCustomerReAllocationUpdate;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(customerReallocationRequestModel));
 			if (result != null) {
 				return result.Replace ("\"", "").ToDecrypt ();
 			} 
