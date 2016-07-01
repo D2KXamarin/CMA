@@ -9,6 +9,7 @@ namespace CMA
 	public partial class AssignAction : ContentPage
 	{
 		int GetAction = 0;
+
 		public AssignAction ()
 		{
 			InitializeComponent ();
@@ -17,21 +18,21 @@ namespace CMA
 			LoadData ();
 
 			btnSearchPAS.Clicked += async (object sender, EventArgs e) => {
-				(BindingContext as VMAssignAction).CurrentMode="EDIT_STAKE";
+				(BindingContext as VMAssignAction).CurrentMode = "EDIT_STAKE";
 				GlobalVariables.StakeholderType = "P";
 				GetAction = 2;
 				await Navigation.PushAsync (new AssignActionStakeholderList ());
 			};
 
 			btnSearchSAS.Clicked += async (object sender, EventArgs e) => {
-				(BindingContext as VMAssignAction).CurrentMode="EDIT_STAKE";
+				(BindingContext as VMAssignAction).CurrentMode = "EDIT_STAKE";
 				GlobalVariables.StakeholderType = "S";
 				GetAction = 2;
 				await Navigation.PushAsync (new AssignActionStakeholderList ());
 			};
 
 			btnSearchIS.Clicked += async (object sender, EventArgs e) => {
-				(BindingContext as VMAssignAction).CurrentMode="EDIT_STAKE";
+				(BindingContext as VMAssignAction).CurrentMode = "EDIT_STAKE";
 				GlobalVariables.StakeholderType = "I";
 				GetAction = 2;
 				await Navigation.PushAsync (new AssignActionStakeholderList ());
@@ -42,6 +43,9 @@ namespace CMA
 				VMAssignAction vm = BindingContext as VMAssignAction;
 				vm.LoadAssignActionStakeholderList ();
 				LoadAssignAction ();
+
+
+
 			};
 
 			btnPrev.Clicked += (object sender, EventArgs e) => {
@@ -49,6 +53,7 @@ namespace CMA
 				VMAssignAction vm = BindingContext as VMAssignAction;
 				vm.LoadAssignActionStakeholderList ();
 				LoadAssignAction ();
+
 			};
 
 			btnAddMore.Clicked += (object sender, EventArgs e) => {
@@ -61,12 +66,11 @@ namespace CMA
 				this.InfoActionStakeholderPicker.Items.Clear ();
 				GlobalVariables.AssignActionID++;
 
-
 			};
 
 			btnCancel.Clicked += (object sender, EventArgs e) => {
 				VMAssignAction vm = BindingContext as VMAssignAction;
-				if (vm.CurrentMode=="ADD") {
+				if (vm.CurrentMode == "ADD") {
 					this.txtAction.Text = "";
 					this.dtpActionDate.Date = DateTime.Now;
 					this.PrimaryActionStakeholderPicker.Items.Clear ();
@@ -78,9 +82,9 @@ namespace CMA
 
 		public async Task LoadData ()
 		{
-			VMAssignAction vm = BindingContext as VMAssignAction;
-			await vm.LoadAssignActionStakeholderList ();
-			LoadAssignAction ();
+				VMAssignAction vm = BindingContext as VMAssignAction;
+				await vm.LoadAssignActionStakeholderList ();
+				LoadAssignAction ();
 
 		}
 
@@ -135,7 +139,7 @@ namespace CMA
 		{
 			base.OnAppearing ();
 
-			if(GetAction == 2)
+			if (GetAction == 2)
 				LoadAssignAction ();
 
 			MessagingCenter.Subscribe<VMAssignAction> (this, Strings.AssignActionInsertUpdateSuccess, async (VMAssignAction sender) => {
