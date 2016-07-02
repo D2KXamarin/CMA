@@ -22,19 +22,19 @@
 							</Grid.ColumnDefinitions>
 							<Label Text="Quantity" Grid.Row="0" Grid.Column="0" YAlign="Center">
 							</Label>
-							<Entry x:Name="TxtQuantity" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PQuantity}" >
+							<Entry x:Name="TxtQuantity" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PQuantity}" IsEnabled="{Binding IsEnableQuantity}">
 							</Entry>
 							<Label Text="Carat" Grid.Row="1" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtCarat" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding PCarat}" >
+							<Entry x:Name="TxtCarat" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding PCarat}" IsEnabled="{Binding IsEnableCarat}" >
 							</Entry>
 							<Label Text="Margin" Grid.Row="2" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtMargin" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding PMargin}" >
+							<Entry x:Name="TxtMargin" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding PMargin}" IsEnabled="{Binding IsEnableMargin}" >
 							</Entry>
 							<Label Text="Nature of Gold" Grid.Row="3" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtNature" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding PNature}" >
+							<Entry x:Name="TxtNature" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding PNature}" IsEnabled="{Binding IsEnableNature}" >
 							</Entry>
 
 
@@ -45,7 +45,7 @@
 						</Button>
 					    <Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" >
 						</Button>
-						<Button x:Name="btnCancle" Text="Cancel" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleCancle}">
+						<Button x:Name="btnCancle" Text="Cancel" HorizontalOptions="FillAndExpand" Command="{Binding Cancel}" IsEnabled="{Binding IsVisibleCancle}">
 						</Button>
 					</StackLayout>
 				</StackLayout>

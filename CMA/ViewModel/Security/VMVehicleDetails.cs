@@ -27,7 +27,6 @@ namespace CMA
 		}
 		public int SecurityEntityId ;
 		public int VehicleEntityID=0;
-		public int currentindex=0;
 
 
 
