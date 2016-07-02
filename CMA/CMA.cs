@@ -8,12 +8,12 @@ namespace CMA
 	{
 		public App ()
 		{
-//			MainPage = new NavigationPage(new Login());
+			MainPage = new NavigationPage(new Login());
 
 			GlobalVariables.IsOffline = SQLiteDatabase.Instance.IsDataInLocal ();
 //			MainPage = new MenuPage ();
 //			MainPage = new NavigationPage(new Vehicle_Details());
-			MainPage = new NavigationPage(new ShareDetails());
+//			MainPage = new NavigationPage(new ShareDetails());
 
 
 		}
