@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.PropertyDetails" Title="Property Details">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.PropertyDetails" Title="Property Details">
+	<ContentPage.BindingContext>
+		<local:VMPropertyDetails />
+	</ContentPage.BindingContext>
 	<ContentPage.Content>
 	<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
 					<StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
@@ -21,35 +24,43 @@
 							</Grid.ColumnDefinitions>
 							<Label Text="Insurance Co" YAlign="Center" Grid.Row="0" Grid.Column="0">
 							</Label>
-							<Entry x:Name="txtInsuranceCo" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="1">
+							<Entry x:Name="txtInsuranceCo" Text="{Binding PInsuranceCo}" IsEnabled="{Binding IsEnableInsuranceCo}" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="1">
 							</Entry>
-							<Label Text="Valid Up to Date" YAlign="Center" Grid.Row="1" Grid.Column="0">
+							<Label Text="Insurance Expiry Date" YAlign="Center" Grid.Row="1" Grid.Column="0">
 							</Label>
-							<DatePicker x:Name="dtpValidUptoDt" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PCommecementDate}" IsEnabled="{Binding IsCommecementDateEnalble}">
+							<DatePicker x:Name="dtpValidUptoDt" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding IsEnabledtpValidUptoDt}" VerticalOptions="Center" Format="yyyy-MM-dd" HorizontalOptions="FillAndExpand" Date="{Binding PdtpValidUptoDt}">
 								<DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
 							</DatePicker>
-							<Label Text="Address" YAlign="Center" Grid.Row="2" Grid.Column="0">
+							<Label Text="Address1" YAlign="Center" Grid.Row="2" Grid.Column="0">
 							</Label>
-							<Entry x:Name="txtAddress" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="1">
+							<Entry x:Name="txtAddress1" VerticalOptions="Center" IsEnabled="{Binding IsEnableAddress1}" Text="{Binding PAddress1}" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="1">
 							</Entry>
-							<Label Text="Pincode" YAlign="Center" Grid.Row="3" Grid.Column="0">
+							<Label Text="Address2" YAlign="Center" Grid.Row="3" Grid.Column="0">
 							</Label>
-							<Entry x:Name="txtPinCode" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="3" Grid.Column="1">
+							<Entry x:Name="txtAddress2" VerticalOptions="Center" IsEnabled="{Binding IsEnableAddress2}" Text="{Binding PAddress2}" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="3" Grid.Column="1">
 							</Entry>
-							<Label Text="Landmark" YAlign="Center" Grid.Row="4" Grid.Column="0">
+							<Label Text="Address3" YAlign="Center" Grid.Row="4" Grid.Column="0">
 							</Label>
-							<Entry x:Name="txtLandmark" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1">
+							<Entry x:Name="txtAddress3" VerticalOptions="Center" IsEnabled="{Binding IsEnableAddress3}" Text="{Binding PAddress3}" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="4" Grid.Column="1">
+							</Entry>
+							<Label Text="Pincode" YAlign="Center" Grid.Row="5" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtPinCode" VerticalOptions="Center" IsEnabled="{Binding IsEnablePincode}" Text="{Binding PPincode}" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="5" Grid.Column="1">
+							</Entry>
+							<Label Text="Landmark" YAlign="Center" Grid.Row="6" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtLandmark" VerticalOptions="Center" IsEnabled="{Binding IsEnableLandmark}" Text="{Binding PLandmark}" TextColor="#fff" HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1">
 							</Entry>
 						</Grid>
 					</StackLayout>
 					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-						<Button x:Name="btnAttach" FontSize="13" TextColor="White" Text="Show Map" HorizontalOptions="FillAndExpand">
+						<Button x:Name="btnShowMap" FontSize="13" TextColor="White" Text="Show Map" HorizontalOptions="FillAndExpand">
 						</Button>
-						<Button x:Name="btnEdit" FontSize="13" TextColor="White" Text="Edit" HorizontalOptions="FillAndExpand">
+						<Button x:Name="btnEdit" FontSize="13" Command="{Binding Edit}" IsEnabled="{Binding IsEnableEdit}" TextColor="White" Text="Edit" HorizontalOptions="FillAndExpand">
 						</Button>
-						<Button x:Name="btnSave" FontSize="13" TextColor="White" Text="Save" HorizontalOptions="FillAndExpand">
+						<Button x:Name="btnSave" FontSize="13" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" TextColor="White" Text="Save" HorizontalOptions="FillAndExpand">
 						</Button>
-						<Button x:Name="btnCancel" FontSize="13" TextColor="White" Text="Cancel" HorizontalOptions="FillAndExpand">
+						<Button x:Name="btnCancel" FontSize="13" Command="{Binding Cancel}" IsEnabled="{Binding IsEnableCancel}" TextColor="White" Text="Cancel" HorizontalOptions="FillAndExpand">
 						</Button>
 
 					</StackLayout>

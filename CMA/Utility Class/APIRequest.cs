@@ -170,6 +170,21 @@ namespace CMA
 
 		}
 
+		public async Task<string> GetSecurityPropertyDetailsAPI (PropertyDetailsRequestModel propertyDetailsRequestModel)
+		{
+			string JsonParameters = JsonConvert.SerializeObject (propertyDetailsRequestModel);
+
+			string URL = WebAPI.Instance.webLinkSecurityPropertyDetails + "/" + JsonParameters.ToEncrypt ();
+
+			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			}
+			return result;
+
+		}
+
 		public async Task<string> GetActionEventDiaryListAPI (ActionEventDiaryListRequestModel actionEventDiaryDetailsRequestModel)
 		{
 			string JsonParameters = JsonConvert.SerializeObject (actionEventDiaryDetailsRequestModel);

@@ -39,6 +39,7 @@ namespace CMA
 		public readonly string webLinkSecurityGoldDetail;
 		public readonly string webLinkSecurityVehicleDetail;
 		public readonly string webLinkSecurityShareDetails;
+		public readonly string webLinkSecurityPropertyDetails;
 
         private static WebAPI _instance = null;
 
@@ -78,6 +79,7 @@ namespace CMA
 			webLinkSecurityGoldDetail = webLinkHost + "CrisMAc/APP_GetSecurityGoldDetail";
 			webLinkSecurityVehicleDetail = webLinkHost + "CrisMAc/APP_GetSecurityVehicleDetail";
 			webLinkSecurityShareDetails = webLinkHost + "CrisMAc/APP_GetSecurityShareDetail";
+			webLinkSecurityPropertyDetails = webLinkHost + "CrisMAc/APP_GetSecurityPropertyDetail";
         }
         private static object locker = new object();
 
