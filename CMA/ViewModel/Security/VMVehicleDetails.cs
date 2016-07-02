@@ -160,26 +160,16 @@ namespace CMA
 			}
 		}
 
-		public void EnableField(){
-			if (currentindex == 1) {
-				IsEnableMake = true;
-				IsEnableModel = true;
-				IsEnableInsurance = true;
-				IsEnableType = true;
-				IsEnableSave = true;
-				IsEnableVehicle = true;
-				IsVisibleCancle = true;
-				IsEnableEdit = false;
-			} else if (currentindex == 2) {
-				IsEnableMake = false;
-				IsEnableModel = false;
-				IsEnableInsurance = false;
-				IsEnableType = false;
-				IsEnableSave = false;
-				IsEnableVehicle = false;
-				IsVisibleCancle = false;
-				IsEnableEdit = true;
-			}
+		void ChangeState(bool flag)
+		{
+			IsEnableMake = flag;
+			IsEnableModel = flag;
+			IsEnableInsurance = flag;
+			IsEnableType = flag;
+			IsEnableSave = flag;
+			IsEnableVehicle = flag;
+			IsVisibleCancle = flag;
+			IsEnableEdit = !flag;
 		}
 
 		SecurityVehicleDetailModel securityVehicleDetailModel =null;
@@ -215,24 +205,20 @@ namespace CMA
 		}
 
 		private Command _Edit = null;
-
 		public Command Edit {
 			get {
 				return _Edit ?? new Command (async delegate(object o) {
-					currentindex=1;
-					EnableField();
-				
+					ChangeState(true);				
 				});
 			}
 		}
-		private Command _Cancel = null;
 
+		private Command _Cancel = null;
 		public Command Cancel {
 			get {
 				return _Cancel ?? new Command (async delegate(object o) {
-					currentindex=2;
 					LoadData();
-					EnableField();
+					ChangeState(false);
 				});
 			}
 		}
