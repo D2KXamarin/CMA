@@ -10,6 +10,16 @@ namespace CMA
 		public SecurityDetails ()
 		{
 			InitializeComponent ();
+			lvSecurityDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => 
+			{
+				SecurityDetailsModel C = (SecurityDetailsModel)lvSecurityDetails.SelectedItem;
+				if(C.SecurityType=="GOLD"){
+					this.Navigation.PushAsync (new GoldDetails (C.SecurityEntityId));
+				}
+				else if(C.SecurityType=="VEHICLE"){
+					this.Navigation.PushAsync (new Vehicle_Details (C.SecurityEntityId));
+				}
+			};
 		}
 
 		protected override void OnAppearing ()

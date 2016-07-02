@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.GoldDetails"  xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Gold Details">
+	<ContentPage.BindingContext>
+		<local:VMGoldDetals/>
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+			<ScrollView>
+				<StackLayout>
+					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Text="Quantity" Grid.Row="0" Grid.Column="0" YAlign="Center">
+							</Label>
+							<Entry x:Name="TxtQuantity" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PQuantity}" >
+							</Entry>
+							<Label Text="Carat" Grid.Row="1" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtCarat" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding PCarat}" >
+							</Entry>
+							<Label Text="Margin" Grid.Row="2" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtMargin" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding PMargin}" >
+							</Entry>
+							<Label Text="Nature of Gold" Grid.Row="3" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtNature" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding PNature}" >
+							</Entry>
+
+
+						</Grid>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20">
+						<Button x:Name="btnEdit" Text="Edit" HorizontalOptions="FillAndExpand" Command="{Binding Edit}" IsEnabled="{Binding IsEnableEdit}" >
+						</Button>
+					    <Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" >
+						</Button>
+						<Button x:Name="btnCancle" Text="Cancel" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleCancle}">
+						</Button>
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

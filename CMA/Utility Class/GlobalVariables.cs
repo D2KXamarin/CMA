@@ -15,6 +15,8 @@ namespace CMA
 		public static string BranchCode=string.Empty;
 		public static string SearchString=string.Empty;
 		public static string CustomerEntityID= "0";
+//		public static string VehicleEntityID= "0";
+
 		public static string AccountEntityID= "0";
 		public static string AccountID= string.Empty;
 		public static string CustomerName   = string.Empty;

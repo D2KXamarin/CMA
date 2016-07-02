@@ -12,6 +12,8 @@ namespace CMA
 
 			GlobalVariables.IsOffline = SQLiteDatabase.Instance.IsDataInLocal ();
 //			MainPage = new MenuPage ();
+//			MainPage = new NavigationPage(new Vehicle_Details());
+
 		}
 
 		protected override void OnStart ()

@@ -20,7 +20,6 @@ namespace CMA
 
 
 		public const string CustomerReallocationSuccess = "CustomerReallocationSuccess";
-		public const string CustomerReallocationValidate = "CustomerReallocationSuccess";
 
 		public const string AssignActionInsertUpdateSuccess = "AssignActionInsertUpdateSuccess";
 

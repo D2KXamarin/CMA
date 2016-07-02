@@ -161,6 +161,16 @@
     <Compile Include="ViewModel\DataSync\VMCustomerListDataSync.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
     <Compile Include="Interface\ISessionManager.cs" />
+    <Compile Include="View\Security\Vehicle_Details.xaml.cs">
+      <DependentUpon>Vehicle_Details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Security\VMVehicleDetails.cs" />
+    <Compile Include="Model\Security\VehicleDetailsModel.cs" />
+    <Compile Include="View\Security\GoldDetails.xaml.cs">
+      <DependentUpon>GoldDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Security\GoldDetailModel.cs" />
+    <Compile Include="ViewModel\Security\VMGoldDetals.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -236,6 +246,12 @@
     <EmbeddedResource Include="View\DataSync\CustomerListDataSync.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Security\Vehicle_Details.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Security\GoldDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Common\CustomerList.xaml">
@@ -307,5 +323,8 @@
     <Folder Include="Model\DataSync\" />
     <Folder Include="View\DataSync\" />
     <Folder Include="Model\Login\" />
+    <Folder Include="View\Security\" />
+    <Folder Include="ViewModel\Security\" />
+    <Folder Include="Model\Security\" />
   </ItemGroup>
 </Project>

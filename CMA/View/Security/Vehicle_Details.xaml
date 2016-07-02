@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.Vehicle_Details" xmlns:local="clr-namespace:CMA;assembly=CMA" Title="Vehicle Details">
+	<ContentPage.BindingContext>
+		<local:VMVehicleDetails />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+			<ScrollView>
+				<StackLayout>
+					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="40" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Text="Make" Grid.Row="0" Grid.Column="0" YAlign="Center">
+							</Label>
+							<Entry x:Name="TxtMake" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PMake}" IsEnabled="{Binding IsEnableMake}" >
+							</Entry>
+							<Label Text="Model" Grid.Row="1" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtModel" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding PModel}" IsEnabled="{Binding IsEnableModel}"  >
+							</Entry>
+							<Label Text="Type" Grid.Row="2" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtType" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding PType}" IsEnabled="{Binding IsEnableType}"  >
+							</Entry>
+							<Label Text="Vehicle No." Grid.Row="3" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtVehicle" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding PVehicle}" IsEnabled="{Binding IsEnableVehicle}"  >
+							</Entry>
+							<Label Text="Insurance Co." Grid.Row="4" Grid.Column="0">
+							</Label>
+							<Entry x:Name="TxtInsurance" HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Text="{Binding PInsurance}" IsEnabled="{Binding IsEnableInsurance}"  >
+							</Entry>
+
+						</Grid>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20">
+						<Button x:Name="btnEdit" Text="Edit" HorizontalOptions="FillAndExpand" Command="{Binding Edit}" IsEnabled="{Binding IsEnableEdit}" >
+						</Button>
+					    <Button x:Name="btnSave" Text="Save" HorizontalOptions="FillAndExpand" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" >
+						</Button>
+						<Button x:Name="btnCancle" Text="Cancel" HorizontalOptions="FillAndExpand" Command="{Binding Cancel}" IsEnabled="{Binding IsVisibleCancle}">
+						</Button>
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

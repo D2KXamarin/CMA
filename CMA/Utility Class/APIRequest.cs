@@ -336,6 +336,35 @@ namespace CMA
 
 			return result;
 		}
+
+		public async Task<string>  GetSecurityGoldDetail(SecurityGoldDetailRequestModel securityGoldDetailRequestModel)
+		{
+			string JsonParameters = JsonConvert.SerializeObject (securityGoldDetailRequestModel);
+
+			string URL = WebAPI.Instance.webLinkSecurityGoldDetail + "/" + JsonParameters.ToEncrypt ();
+
+			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+
+			if (result != null)
+				return result.Replace("\"","").ToDecrypt();
+
+			return result;
+		}
+
+		public async Task<string>  GetSecurityVehicleDetail(SecurityVehicleDetailRequestModel securityVehicleDetailRequestModel)
+		{
+			string JsonParameters = JsonConvert.SerializeObject (securityVehicleDetailRequestModel);
+
+			string URL = WebAPI.Instance.webLinkSecurityVehicleDetail + "/" + JsonParameters.ToEncrypt ();
+
+			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+
+			if (result != null)
+				return result.Replace("\"","").ToDecrypt();
+
+			return result;
+		}
+
 		#endregion
 
 	}

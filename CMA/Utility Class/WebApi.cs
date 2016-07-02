@@ -36,6 +36,8 @@ namespace CMA
 		public readonly string webLinkCustomerDetailsSync;
 		public readonly string webLinkDetailsSync;
 		public readonly string webLinkActionDetailsSync;
+		public readonly string webLinkSecurityGoldDetail;
+		public readonly string webLinkSecurityVehicleDetail;
 
         private static WebAPI _instance = null;
 
@@ -71,6 +73,10 @@ namespace CMA
 			webLinkCustomerDetailsSync = webLinkHost + "CrisMAc/APP_GetCustomerDetailsSync";
 			webLinkDetailsSync = webLinkHost + "CrisMAc/APP_GetDetailsSync";
 			webLinkActionDetailsSync = webLinkHost + "CrisMAc/APP_GetActionDetailsSync";
+
+			webLinkSecurityGoldDetail = webLinkHost + "CrisMAc/APP_GetSecurityGoldDetail";
+			webLinkSecurityVehicleDetail = webLinkHost + "CrisMAc/APP_GetSecurityVehicleDetail";
+
         }
         private static object locker = new object();
 

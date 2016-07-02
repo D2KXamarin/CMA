@@ -17,6 +17,7 @@ namespace CMA
 
 			InitializeComponent();
 			Clearall ();
+		
 			var tgr = new TapGestureRecognizer();
 			forgetPasswordLabel.GestureRecognizers.Add(tgr);
 
