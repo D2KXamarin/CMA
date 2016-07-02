@@ -7,6 +7,7 @@ namespace CMA
 		public static bool IsOffline = false;
 
 		public static string UserLoginID= "mahesh123";
+		public static string SecurityEntityID= "10264797";
 		public static string UserLocationCode= string.Empty;
 		public static string UserLocationName= string.Empty;
 		public static string UserLocation= string.Empty;

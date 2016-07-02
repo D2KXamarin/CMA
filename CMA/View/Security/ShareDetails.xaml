@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:CMA;assembly=CMA" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CMA.ShareDetails" Title="Share Details">
+	<ContentPage.BindingContext>
+		<local:VMSecurityShareDetail />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="5">
+					<StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+						<ActivityIndicator Color="Black" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+						</ActivityIndicator>
+					</StackLayout>
+					<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="5">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="50" />
+								<RowDefinition Height="50" />
+								<RowDefinition Height="50" />
+								<RowDefinition Height="50" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Text="Company name" YAlign="Center" Grid.Row="0" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtCompanyName" Text="{Binding PCompanyKey}" IsEnabled="{Binding IsEnableCompany}" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="0" Grid.Column="1">
+							</Entry>
+							<Label Text="No. of shares" YAlign="Center" Grid.Row="1" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtNoOfShares" Text="{Binding PNoOfUnit}" IsEnabled="{Binding IsEnableUnits}" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+							</Entry>
+							<Label Text="Current value" YAlign="Center" Grid.Row="2" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtCurrentValue" Text="{Binding PCurrentValue}" IsEnabled="{Binding IsEnableCurrentValue}" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="1">
+							</Entry>
+<!--							<Label Text="Margin" YAlign="Center" Grid.Row="3" Grid.Column="0">
+							</Label>
+							<Entry x:Name="txtMargin" VerticalOptions="Center" TextColor="#fff" HorizontalOptions="FillAndExpand"  Grid.Row="3" Grid.Column="1">
+							</Entry>-->
+						</Grid>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20">
+						<Button x:Name="btnEdit" TextColor="White" Text="Edit" Command="{Binding Edit}" IsEnabled="{Binding IsEnableEdit}" HorizontalOptions="FillAndExpand">
+						</Button>
+						<Button x:Name="btnSave" TextColor="White" Text="Save" Command="{Binding Save}" IsEnabled="{Binding IsEnableSave}" HorizontalOptions="FillAndExpand">
+						</Button>
+						<Button x:Name="btnCancel" TextColor="White" Command="{Binding Cancel}" IsEnabled="{Binding IsEnableCancel}" Text="Cancel" HorizontalOptions="FillAndExpand">
+						</Button>
+					</StackLayout>
+				</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
+
