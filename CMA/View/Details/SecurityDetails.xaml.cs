@@ -19,6 +19,13 @@ namespace CMA
 				else if(C.SecurityType=="VEHICLE"){
 					this.Navigation.PushAsync (new Vehicle_Details (C.SecurityEntityId));
 				}
+				else if(C.SecurityType=="SHARES"){
+					this.Navigation.PushAsync (new ShareDetails (C.SecurityEntityId));
+				}
+				else if(C.SecurityType=="PROPERTY"){
+					this.Navigation.PushAsync (new PropertyDetails (C.SecurityEntityId));
+				}
+
 			};
 		}
 

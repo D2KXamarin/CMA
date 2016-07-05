@@ -27,8 +27,11 @@ namespace CMA
 
 		public VMPropertyDetails ()
 		{
-			LoadSecurityPropertyDetail ();
+//			LoadSecurityPropertyDetail ();
 		}
+
+		public int SecurityEntityId ;
+
 
 		private bool _ActivityIndicator = false;
 
@@ -210,16 +213,17 @@ namespace CMA
 			}
 		}
 
-		PropertyDetailsModel propertyDetailsModel =null;
+		PropertyDetailsModel securityPropertyDetail =null;
+		int Operationflag;
 
 		public void LoadData(){
-			PInsuranceCo = propertyDetailsModel.InsuranceCompany;
-			PdtpValidUptoDt = propertyDetailsModel.InsuranceExpiryDt;
-			PAddress1 = propertyDetailsModel.Add1;
-			PAddress2 = propertyDetailsModel.Add2;
-			PAddress3 = propertyDetailsModel.Add3;
-			PPincode = propertyDetailsModel.Pincode;
-			PLandmark = propertyDetailsModel.Landmark;
+			PInsuranceCo = securityPropertyDetail.InsuranceCompany;
+			PdtpValidUptoDt = securityPropertyDetail.InsuranceExpiryDt;
+			PAddress1 = securityPropertyDetail.Add1;
+			PAddress2 = securityPropertyDetail.Add2;
+			PAddress3 = securityPropertyDetail.Add3;
+			PPincode = securityPropertyDetail.Pincode;
+			PLandmark = securityPropertyDetail.Landmark;
 		}
 
 		public async Task LoadSecurityPropertyDetail ()
@@ -234,13 +238,17 @@ namespace CMA
 
 				if (result != null) {
 					PropertyDetailsResponseModel responseModelList = JsonConvert.DeserializeObject<PropertyDetailsResponseModel> (result);
-					propertyDetailsModel = responseModelList.SecurityPropertyDetail [0];
-					if (propertyDetailsModel != null) {
 
-						LoadData ();
+					if (responseModelList.SecurityPropertyDetail != null) {
+						Operationflag = 2;
+						securityPropertyDetail = responseModelList.SecurityPropertyDetail [0];
+						if (securityPropertyDetail != null) {
+							LoadData ();
+
+						}
+					} else {
+						Operationflag = 1;
 					}
-					IsEnableEdit = true;
-
 				}
 			} catch {
 				GlobalVariables.DisplayMessage = "Error";
@@ -251,11 +259,68 @@ namespace CMA
 
 		void ChangeState(bool flag)
 		{
-			
+			IsEnableInsuranceCo = flag;
+			IsEnabledtpValidUptoDt = flag;
+			IsEnableAddress1 = flag;
+			IsEnableAddress2 = flag;
+			IsEnableAddress3 = flag;
+			IsEnablePincode = flag;
+			IsEnableLandmark = flag;
 			IsEnableSave = flag;
 			IsVisibleCancle = flag;
 			IsEnableEdit = !flag;
 		}
+
+		private Command _Save = null;
+
+		public Command Save {
+			get {
+				return _Save ?? new Command (async delegate(object o) {
+
+//					try {
+//
+//						SecurityShareDetailInsertUpdateModel securityShareDetailInsertUpdateModel = new SecurityShareDetailInsertUpdateModel ();
+//						if (Operationflag == 2) {
+//							securityShareDetailInsertUpdateModel.CustomerEntityID = securityShareDetail.CustomerEntityID;
+//							securityShareDetailInsertUpdateModel.AccountEntityID = securityShareDetail.AccountEntityId;
+//
+//						} else if (Operationflag == 1) {
+//							securityShareDetailInsertUpdateModel.CustomerEntityID = GlobalVariables.CustomerEntityID;
+//							securityShareDetailInsertUpdateModel.AccountEntityID = GlobalVariables.AccountEntityID;
+//						}
+//
+//						securityShareDetailInsertUpdateModel.UserLoginID = GlobalVariables.UserLoginID;
+//						securityShareDetailInsertUpdateModel.CRMEntityID = securityShareDetail.CRMEntityID;
+//						securityShareDetailInsertUpdateModel.SecurityEntityID = Convert.ToInt32(GlobalVariables.SecurityEntityID);
+//
+//						securityShareDetailInsertUpdateModel.NoOfUnit=PNoOfUnit.ToString();
+//						securityShareDetailInsertUpdateModel.CurrentValue=PCurrentValue.ToString();
+//						//to be added kevin securityShareDetailInsertUpdateModel.HOEntityID=
+//						securityShareDetailInsertUpdateModel.OperationFlag = Operationflag;
+//
+//						var result = await APIRequest.Instance.SecurityShareDetailInsertUpdate (securityShareDetailInsertUpdateModel);
+//
+//						if (result != null) {
+//							GlobalVariables.DisplayMessage = "Gold Details Saved Successfully";
+//							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.ShareDetails_Success);
+//						} else {
+//							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.ShareDetails_Failure);
+//						}
+//						//					securityGoldDetailModelUpdate();
+//						securityShareDetail.NoOfUnit=Convert.ToInt32(securityShareDetailInsertUpdateModel.NoOfUnit) ;
+//						securityShareDetail.CurrentValue=Convert.ToDouble(securityShareDetailInsertUpdateModel.CurrentValue);
+//						ChangeState(false);
+//
+//					} catch {
+//						GlobalVariables.DisplayMessage = "Error... Please try again";
+//						MessagingCenter.Send (this, Strings.Display_Message);
+//					}
+//
+
+				});
+			}
+		}
+
 
 		private Command _Edit = null;
 		public Command Edit {

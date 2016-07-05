@@ -130,7 +130,7 @@ namespace CMA
 					ActivityIndicator = true;
 					if (PSearchValue.Length >= 3) {
 						try {
-							var result = await APIRequest.Instance.GetInventoryList (new BranchListRequestModel {
+							var result = await APIRequest.Instance.GetBranchList (new BranchListRequestModel {
 								UserLoginId = GlobalVariables.UserLoginID,
 								SearchString = PSearchValue
 							});

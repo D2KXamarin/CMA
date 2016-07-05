@@ -18,6 +18,8 @@ namespace CMA
 		public const string ActionEvent_Success = "ActionEvent_Success";
 		public const string ActionEvent__FAILURE = "ActionEvent__FAILURE";
 
+		public const string ShareDetails_Success = "ShareDetails_Success";
+		public const string ShareDetails_Failure = "ShareDetails_Failure";
 
 		public const string CustomerReallocationSuccess = "CustomerReallocationSuccess";
 

@@ -44,7 +44,7 @@ namespace CMA
 			return result;
 		}
 
-		public async Task<string> GetInventoryList (BranchListRequestModel branchListRequestModel)
+		public async Task<string> GetBranchList (BranchListRequestModel branchListRequestModel)
 		{
 			string JsonParameters = JsonConvert.SerializeObject (branchListRequestModel);
 
@@ -321,6 +321,16 @@ namespace CMA
 
 			return result;
 
+		}
+
+		public async Task<string> SecurityShareDetailInsertUpdate(SecurityShareDetailInsertUpdateModel securityShareDetailInsertUpdateModel)
+		{
+			string URL = WebAPI.Instance.webLinkSecurityShareDetailUpdate + "/" ;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(securityShareDetailInsertUpdateModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
 		}
 
 

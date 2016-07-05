@@ -26,5 +26,21 @@ namespace CMA
 		public string UserLoginID { get; set; }
 		public string SecurityEntityID { get; set; }
 	}
+
+	public class SecurityPropertyDetailInsertUpdateModel
+	{
+		public string UserLoginID { get; set; }
+		public string CustomerEntityID { get; set; }
+		public string AccountEntityID { get; set; }
+		public int SecurityEntityID { get; set; }
+		public string PropertyEntityID { get; set; }
+		public string InsuranceCompany { get; set; }
+		public string ValidUpTo { get; set; }
+		public string Add1 { get; set; }
+		public string Add2 { get; set; }
+		public string Add3 { get; set; }
+		public string Pincode { get; set; }
+		public string Landmark { get; set; }
+	}
 }
 

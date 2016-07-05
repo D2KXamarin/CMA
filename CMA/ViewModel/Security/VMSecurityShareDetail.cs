@@ -28,8 +28,10 @@ namespace CMA
 
 		public VMSecurityShareDetail ()
 		{
-			LoadSecurityShareDetail ();
+//			LoadSecurityShareDetail ();
 		}
+
+		public int SecurityEntityId ;
 
 		private bool _ActivityIndicator = false;
 
@@ -51,9 +53,9 @@ namespace CMA
 			}
 		}
 
-		private int _PNoOfUnit;
+		private string _PNoOfUnit;
 
-		public	int PNoOfUnit {
+		public	string PNoOfUnit {
 			get { 
 				return _PNoOfUnit; 
 			}
@@ -64,9 +66,9 @@ namespace CMA
 			}
 		}
 
-		private double _PCurrentValue;
+		private string _PCurrentValue;
 
-		public	double PCurrentValue {
+		public	string PCurrentValue {
 			get { 
 				return _PCurrentValue; 
 			}
@@ -164,7 +166,7 @@ namespace CMA
 		}
 
 		SecurityShareDetail securityShareDetail = null;
-
+		string Operationflag;
 		public void LoadData(){
 			
 			PCompanyKey = securityShareDetail.CompanyKey;
@@ -175,30 +177,87 @@ namespace CMA
 
 		public async Task LoadSecurityShareDetail ()
 		{
-			ActivityIndicator = true;
+			
 			try {
 				
 				var result = await APIRequest.Instance.GetSecurityShareDetailsAPI (new SecurityShareDetailRequestModel {
 					UserLoginID = GlobalVariables.UserLoginID,
-					SecurityEntityID = GlobalVariables.SecurityEntityID
+					SecurityEntityID = SecurityEntityId
 				});
 
 				if (result != null) {
 					SecurityShareDetailResponseModel responseModelList = JsonConvert.DeserializeObject<SecurityShareDetailResponseModel> (result);
-					securityShareDetail = responseModelList.SecurityShareDetail [0];
-					if (securityShareDetail != null) {
-
-						LoadData ();
+					if (responseModelList.SecurityShareDetail != null) {
+						Operationflag = "2";
+						securityShareDetail = responseModelList.SecurityShareDetail [0];
+						if (securityShareDetail != null) {
+							LoadData ();
+						}
+					} else {
+						Operationflag = "1";
 					}
-					IsEnableEdit = true;
-
 				}
+				ChangeState(false);
 			} catch {
 				GlobalVariables.DisplayMessage = "Error";
 				MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.Display_Message);
 			}
-			ActivityIndicator = false;
+
 		}
+
+		private Command _Save = null;
+
+		public Command Save {
+			get {
+				return _Save ?? new Command (async delegate(object o) {
+
+					try {
+
+						SecurityShareDetailInsertUpdateModel securityShareDetailInsertUpdateModel = new SecurityShareDetailInsertUpdateModel ();
+						if (Operationflag == "2") {
+							securityShareDetailInsertUpdateModel.CustomerEntityID = securityShareDetail.CustomerEntityID;
+							securityShareDetailInsertUpdateModel.AccountEntityID = securityShareDetail.AccountEntityId;
+
+						} else if (Operationflag == "1") {
+							securityShareDetailInsertUpdateModel.CustomerEntityID = GlobalVariables.CustomerEntityID;
+							securityShareDetailInsertUpdateModel.AccountEntityID = GlobalVariables.AccountEntityID;
+						}
+
+						securityShareDetailInsertUpdateModel.UserLoginID = GlobalVariables.UserLoginID;
+						securityShareDetailInsertUpdateModel.CRMEntityID = securityShareDetail.CRMEntityID == null ? "0": securityShareDetail.CRMEntityID;
+						securityShareDetailInsertUpdateModel.SecurityEntityID = SecurityEntityId;
+						securityShareDetailInsertUpdateModel.CompanyKey=PCompanyKey;
+						securityShareDetailInsertUpdateModel.NoOfUnit=PNoOfUnit.ToString();
+						securityShareDetailInsertUpdateModel.CurrentValue=PCurrentValue.ToString();
+						securityShareDetailInsertUpdateModel.HOSecurityAlt_Key=securityShareDetail.HOSecurityAlt_Key == null ? "0" : securityShareDetail.HOSecurityAlt_Key;
+						securityShareDetailInsertUpdateModel.OperationFlag = Operationflag;
+
+						var result = await APIRequest.Instance.SecurityShareDetailInsertUpdate (securityShareDetailInsertUpdateModel);
+
+						if (result != null) {
+							GlobalVariables.DisplayMessage = "Share Details Saved Successfully";
+							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.Display_Message);
+						} else {
+							GlobalVariables.DisplayMessage = "Error... Please try again";
+							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.Display_Message);
+						}
+						//update model with insert update model
+						securityShareDetail.CompanyKey=securityShareDetailInsertUpdateModel.CompanyKey;
+						securityShareDetail.NoOfUnit=securityShareDetailInsertUpdateModel.NoOfUnit ;
+						securityShareDetail.CurrentValue=securityShareDetailInsertUpdateModel.CurrentValue;
+						ChangeState(false);
+
+					} catch {
+						GlobalVariables.DisplayMessage = "Error... Please try again";
+						MessagingCenter.Send (this, Strings.Display_Message);
+					}
+
+
+				});
+			}
+		}
+
+
 
 		private Command _Edit = null;
 		public Command Edit {

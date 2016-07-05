@@ -64,6 +64,7 @@ namespace CMA
 
 							if (flag == 1 && loginResponseModel != null) {
 								GlobalVariables.UserLoginID = VMLogin.PUserID;
+
 								GlobalVariables.UserLocationCode=loginResponseModel.UserLocationCode;
 								GlobalVariables.UserLocationName=loginResponseModel.UserLocationName;
 								GlobalVariables.UserLocation=loginResponseModel.UserLocation;
