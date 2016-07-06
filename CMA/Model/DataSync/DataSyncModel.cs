@@ -71,5 +71,11 @@ namespace CMA
 		public List<ActionEventDiaryListModel> GetActionEventDiaryList { get; set; }
 		public List<ActionEventModel> ActionEventDiaryDetails { get; set; }
 	}
+
+	public class UploadToServerRequestModel
+	{
+		public List<ActionEventUpdate> UploadToServerXML{ get; set;}
+		public string UserLoginID{ get; set;}
+	}
 }
 
