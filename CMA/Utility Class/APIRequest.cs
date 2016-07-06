@@ -464,6 +464,17 @@ namespace CMA
 
 		}
 
+		public async Task<string> DataSyncUploadDataToServer(UploadToServerRequestModel uploadToServerRequestModel)
+		{
+			string URL = WebAPI.Instance.webLinkUploadDataToServerSync;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(uploadToServerRequestModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
+
+		}
+
 		#endregion
 
 	}

@@ -232,10 +232,24 @@ namespace CMA
 				
 			}
 
-//			public async Task<bool> Process (List<ActionEventUpdate> listCustomer)
-//			{
-//				
-//			}
+			public async Task<bool> Process (List<ActionEventUpdate> listCustomer)
+			{
+				try {
+					UploadToServerRequestModel uploadToServerRequestModel = new UploadToServerRequestModel () { 
+						UploadToServerXML = listCustomer,
+						UserLoginID = GlobalVariables.UserLoginID
+					};
+
+					string result = await APIRequest.Instance.DataSyncUploadDataToServer (uploadToServerRequestModel);
+
+					if (result != null) {
+						return true;
+					} else
+						return false;
+				} catch {
+					return false;
+				}
+			}
 		}
 	}
 }

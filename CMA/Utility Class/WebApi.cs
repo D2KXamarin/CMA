@@ -38,6 +38,8 @@ namespace CMA
 		public readonly string webLinkCustomerDetailsSync;
 		public readonly string webLinkDetailsSync;
 		public readonly string webLinkActionDetailsSync;
+		public readonly string webLinkUploadDataToServerSync;
+
 		public readonly string webLinkSecurityGoldDetail;
 		public readonly string webLinkSecurityGoldDetailUpdate;
 
@@ -86,7 +88,8 @@ namespace CMA
 			webLinkCustomerDetailsSync = webLinkHost + "CrisMAc/APP_GetCustomerDetailsSync";
 			webLinkDetailsSync = webLinkHost + "CrisMAc/APP_GetDetailsSync";
 			webLinkActionDetailsSync = webLinkHost + "CrisMAc/APP_GetActionDetailsSync";
-
+			webLinkUploadDataToServerSync = webLinkHost + "CrisMAc/APP_UploadDataToServer/";
+				
 			webLinkSecurityGoldDetail = webLinkHost + "CrisMAc/APP_GetSecurityGoldDetail";
 			webLinkSecurityGoldDetailUpdate = webLinkHost + "CrisMAc/APP_SecurityGoldDetailInsertUpdate";
 
