@@ -517,6 +517,17 @@ namespace CMA
 			}
 		}
 
+		public bool DeleteLocalData()
+		{
+			try{
+				database.DeleteAll<DataSyncStatusModel>();
+				return true;
+			}
+			catch{
+				return false;
+			}
+		}
+
 		#endregion
 
 	}

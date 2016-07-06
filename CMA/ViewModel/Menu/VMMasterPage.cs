@@ -61,8 +61,8 @@ namespace CMA
 
 				TargetType = typeof(Operations),
 				MenuGroup = "Home"
-					//	hasSubMenu = false
-					//SubMenu = subMenuList
+				//	hasSubMenu = false
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
@@ -98,58 +98,49 @@ namespace CMA
 			});
 			masterPageItems.Add (new MasterPageModel {
 				Title = "Recovery Details",
-				Index= 3,
+				Index = 3,
 				TargetType = typeof(DetailsTabbedPage),
 				MenuGroup = "Details"
 				//SubMenu = subMenuList
 			});
 			masterPageItems.Add (new MasterPageModel {
 				Title = "Remark",
-				Index= 0,
+				Index = 0,
 				TargetType = typeof(RemarkTabbedPage),
 				MenuGroup = "Details"
-					//SubMenu = subMenuList
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
 				Title = "Institutional Memory Diary",
-				Index= 0,
+				Index = 0,
 				TargetType = typeof(RemarkTabbedPage),
 				MenuGroup = "Details"
-					//SubMenu = subMenuList
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
 				Title = "View Previous Remark",
-				Index= 1,
+				Index = 1,
 				TargetType = typeof(RemarkTabbedPage),
 				MenuGroup = "Details"
-					//SubMenu = subMenuList
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
 				Title = "View/Select Remark",
-				Index= 2,
+				Index = 2,
 				TargetType = typeof(RemarkTabbedPage),
 				MenuGroup = "Details"
-					//SubMenu = subMenuList
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
 				Title = "Customer Reallocation",
-				Index= 3,
+				Index = 3,
 				TargetType = typeof(CustomerReallocation),
 				MenuGroup = "Home"
-					//SubMenu = subMenuList
-			});
-
-			masterPageItems.Add (new MasterPageModel {
-				Title = "Download for Offline",
-
-				TargetType = typeof(ServerToLocal),
-				MenuGroup = "Home"
-					//	hasSubMenu = false
-					//SubMenu = subMenuList
+				//SubMenu = subMenuList
 			});
 
 			masterPageItems.Add (new MasterPageModel {
@@ -157,9 +148,29 @@ namespace CMA
 
 				TargetType = typeof(ChangePassword),
 				MenuGroup = "Home"
+				//	hasSubMenu = false
+				//SubMenu = subMenuList
+			});
+
+			if (!GlobalVariables.IsOffline)
+				masterPageItems.Add (new MasterPageModel {
+					Title = "Download for Offline",
+
+					TargetType = typeof(ServerToLocal),
+					MenuGroup = "Home"
 					//	hasSubMenu = false
 					//SubMenu = subMenuList
-			});
+				});
+
+			if (GlobalVariables.IsOffline)
+				masterPageItems.Add (new MasterPageModel {
+					Title = "Upload To Server",
+
+					TargetType = typeof(ServerToLocal),
+					MenuGroup = "Home"
+					//	hasSubMenu = false
+					//SubMenu = subMenuList
+				});
 		}
 	}
 }
