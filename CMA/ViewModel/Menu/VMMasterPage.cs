@@ -166,7 +166,7 @@ namespace CMA
 				masterPageItems.Add (new MasterPageModel {
 					Title = "Upload To Server",
 
-					TargetType = typeof(ServerToLocal),
+					TargetType = typeof(LocalToServer),
 					MenuGroup = "Home"
 					//	hasSubMenu = false
 					//SubMenu = subMenuList
