@@ -224,31 +224,34 @@ namespace CMA
 				return false;
 			}
 		}
+	}
 
-		public class LocalToServerDataSync
+	public class LocalToServerDataSync
+	{
+		public LocalToServerDataSync ()
 		{
-			public LocalToServerDataSync ()
-			{
-				
-			}
 
-			public async Task<bool> Process (List<ActionEventUpdate> listCustomer)
-			{
-				try {
-					UploadToServerRequestModel uploadToServerRequestModel = new UploadToServerRequestModel () { 
-						UploadToServerXML = listCustomer,
-						UserLoginID = GlobalVariables.UserLoginID
-					};
+		}
 
-					string result = await APIRequest.Instance.DataSyncUploadDataToServer (uploadToServerRequestModel);
+		public async Task<bool> Process ()
+		{
+			try {
 
-					if (result != null) {
-						return true;
-					} else
-						return false;
-				} catch {
+				List<ActionEventUpdate> listCustomer = SQLiteDatabase.Instance.DataSyncGetActionEventList();
+
+				UploadToServerRequestModel uploadToServerRequestModel = new UploadToServerRequestModel () { 
+					UploadToServerXML = listCustomer,
+					UserLoginID = GlobalVariables.UserLoginID
+				};
+
+				string result = await APIRequest.Instance.DataSyncUploadDataToServer (uploadToServerRequestModel);
+
+				if (result != null) {
+					return SQLiteDatabase.Instance.DeleteLocalData();
+				} else
 					return false;
-				}
+			} catch {
+				return false;
 			}
 		}
 	}
