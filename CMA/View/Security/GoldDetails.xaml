@@ -22,19 +22,19 @@
 							</Grid.ColumnDefinitions>
 							<Label Text="Quantity" Grid.Row="0" Grid.Column="0" YAlign="Center">
 							</Label>
-							<Entry x:Name="TxtQuantity" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding PQuantity}" IsEnabled="{Binding IsEnableQuantity}">
+							<Entry x:Name="TxtQuantity" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Grid.Row="0" Grid.Column="1" Text="{Binding PQuantity}" IsEnabled="{Binding IsEnableQuantity}">
 							</Entry>
 							<Label Text="Carat" Grid.Row="1" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtCarat" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding PCarat}" IsEnabled="{Binding IsEnableCarat}" >
+							<Entry x:Name="TxtCarat" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Grid.Row="1" Grid.Column="1" Text="{Binding PCarat}" IsEnabled="{Binding IsEnableCarat}" >
 							</Entry>
 							<Label Text="Margin" Grid.Row="2" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtMargin" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding PMargin}" IsEnabled="{Binding IsEnableMargin}" >
+							<Entry x:Name="TxtMargin" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Grid.Row="2" Grid.Column="1" Text="{Binding PMargin}" IsEnabled="{Binding IsEnableMargin}" >
 							</Entry>
 							<Label Text="Nature of Gold" Grid.Row="3" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtNature" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding PNature}" IsEnabled="{Binding IsEnableNature}" >
+							<Entry x:Name="TxtNature" HorizontalOptions="FillAndExpand"  Grid.Row="3" Grid.Column="1" Text="{Binding PNature}" IsEnabled="{Binding IsEnableNature}" >
 							</Entry>
 
 

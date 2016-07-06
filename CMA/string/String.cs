@@ -18,6 +18,12 @@ namespace CMA
 		public const string ActionEvent_Success = "ActionEvent_Success";
 		public const string ActionEvent__FAILURE = "ActionEvent__FAILURE";
 
+		public const string GoldDetails_Success = "GoldDetails_Success";
+		public const string GoldDetails__FAILURE = "GoldDetails__FAILURE";
+
+		public const string VehicleDetails_Success = "VehicleDetails_Success";
+		public const string VehicleDetails__FAILURE = "VehicleDetails__FAILURE";
+
 		public const string ShareDetails_Success = "ShareDetails_Success";
 		public const string ShareDetails_Failure = "ShareDetails_Failure";
 
@@ -26,6 +32,9 @@ namespace CMA
 		public const string AssignActionInsertUpdateSuccess = "AssignActionInsertUpdateSuccess";
 
 		public const string AssignActionStakeholderListSuccess = "AssignActionStakeholderListSuccess";
+
+		public const string ChangePassword_Success = "ChangePassword_Success";
+		public const string ChangePassword__FAILURE = "ChangePassword__FAILURE";
 	}
 }
 

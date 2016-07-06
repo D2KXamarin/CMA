@@ -151,6 +151,15 @@ namespace CMA
 					//	hasSubMenu = false
 					//SubMenu = subMenuList
 			});
+
+			masterPageItems.Add (new MasterPageModel {
+				Title = "ChangePassword",
+
+				TargetType = typeof(ChangePassword),
+				MenuGroup = "Home"
+					//	hasSubMenu = false
+					//SubMenu = subMenuList
+			});
 		}
 	}
 }

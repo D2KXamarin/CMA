@@ -12,6 +12,7 @@ namespace CMA
 		#region INotifyPropertyChanged implementation
 
 		public event PropertyChangedEventHandler PropertyChanged;
+
 		protected virtual void OnPropertyChanged (string propertyName)
 		{
 			if (PropertyChanged != null) {
@@ -19,14 +20,16 @@ namespace CMA
 					new PropertyChangedEventArgs (propertyName));
 			}
 		}
+
 		#endregion
 
 		public VMVehicleDetails ()
 		{
-//			LoadVehicelDetails ();
+			//			LoadVehicelDetails ();
 		}
-		public int SecurityEntityId ;
-		public int VehicleEntityID=0;
+
+		public int SecurityEntityId;
+		public string VehicleEntityID;
 
 
 
@@ -110,26 +113,27 @@ namespace CMA
 			}
 		}
 
-		static string _PInsurance = string.Empty;
+		static string _PInsuranceCompany = string.Empty;
 
-		public string PInsurance {
-			get { return _PInsurance; }
+		public string PInsuranceCompany {
+			get { return _PInsuranceCompany; }
 			set {
-				_PInsurance = value;
-				OnPropertyChanged ("PInsurance");
-			}
-		}
-		private bool _IsEnableInsurance = false;
-
-		public bool IsEnableInsurance {
-			get{ return _IsEnableInsurance; }
-			set {
-				_IsEnableInsurance = value;
-				OnPropertyChanged ("IsEnableInsurance");
+				_PInsuranceCompany = value;
+				OnPropertyChanged ("PInsuranceCompany");
 			}
 		}
 
-		private bool _IsEnableEdit = false;
+		private bool _IsEnableInsuranceCompany = false;
+
+		public bool IsEnableInsuranceCompany {
+			get{ return _IsEnableInsuranceCompany; }
+			set {
+				_IsEnableInsuranceCompany = value;
+				OnPropertyChanged ("IsEnableInsuranceCompany");
+			}
+		}
+
+		private bool _IsEnableEdit = true;
 
 		public bool IsEnableEdit {
 			get{ return _IsEnableEdit; }
@@ -159,11 +163,11 @@ namespace CMA
 			}
 		}
 
-		void ChangeState(bool flag)
+		void ChangeState (bool flag)
 		{
 			IsEnableMake = flag;
 			IsEnableModel = flag;
-			IsEnableInsurance = flag;
+			IsEnableInsuranceCompany = flag;
 			IsEnableType = flag;
 			IsEnableSave = flag;
 			IsEnableVehicle = flag;
@@ -171,56 +175,115 @@ namespace CMA
 			IsEnableEdit = !flag;
 		}
 
-		SecurityVehicleDetailModel securityVehicleDetailModel =null;
+		SecurityVehicleDetailModel securityVehicleDetailModel = null;
+		int Operationflag = 0;
 
-		public void LoadData(){
+		public void LoadData ()
+		{
 			VehicleEntityID = securityVehicleDetailModel.VehicleEntityID;
 			PMake = securityVehicleDetailModel.Make;
 			PModel = securityVehicleDetailModel.Model;
 			PType = securityVehicleDetailModel.Type;
 			PVehicle = securityVehicleDetailModel.VehicleNo;
-			PInsurance = securityVehicleDetailModel.InsuranceCompany;
+			PInsuranceCompany = securityVehicleDetailModel.InsuranceCompany;
+
 		}
 
 
-		public async Task LoadVehicelDetails (){
-			
+		public async Task LoadVehicelDetails ()
+		{
 
-			var result = await APIRequest.Instance.GetSecurityVehicleDetail (new SecurityVehicleDetailRequestModel {
-				UserLoginID = GlobalVariables.UserLoginID,
-				SecurityEntityID =SecurityEntityId
-			});
+			try {
+				var result = await APIRequest.Instance.GetSecurityVehicleDetail (new SecurityVehicleDetailRequestModel {
+					UserLoginID = GlobalVariables.UserLoginID,
+					SecurityEntityID = SecurityEntityId
+				});
 
-			if (result != null) {
-				SecurityVehicleDetailResponceModel responseModelList = JsonConvert.DeserializeObject<SecurityVehicleDetailResponceModel>(result);
-				securityVehicleDetailModel = responseModelList.SecurityVehicleDetail [0];
+				if (result != null) {
+					SecurityVehicleDetailResponceModel responseModelList = JsonConvert.DeserializeObject<SecurityVehicleDetailResponceModel> (result);
+
+					securityVehicleDetailModel = responseModelList.SecurityVehicleDetail [0];
+				}
+			} catch {
 			}
-
 			if (securityVehicleDetailModel != null) {
-				
 				LoadData ();
+			} else {
 			}
-			IsEnableEdit = true;
+			ChangeState (false);	
 		}
 
 		private Command _Edit = null;
+
 		public Command Edit {
 			get {
 				return _Edit ?? new Command (async delegate(object o) {
-					ChangeState(true);				
+					ChangeState (true);				
+				});
+			}
+		}
+
+		private Command _Save = null;
+
+		public Command Save {
+			get {
+				return _Save ?? new Command (async delegate (object o) {
+
+					SecurityVehicleDetailInsertUpdateModel securityVehicleDetailInsertUpdateModel = new SecurityVehicleDetailInsertUpdateModel ();
+
+					securityVehicleDetailInsertUpdateModel.CustomerEntityID = securityVehicleDetailModel.CustomerEntityID;
+					securityVehicleDetailInsertUpdateModel.AccountEntityID = securityVehicleDetailModel.AccountEntityId;
+
+
+
+					securityVehicleDetailInsertUpdateModel.UserLoginID = GlobalVariables.UserLoginID;
+
+					securityVehicleDetailInsertUpdateModel.SecurityEntityID = SecurityEntityId;
+					securityVehicleDetailInsertUpdateModel.VehicleEntityID = VehicleEntityID;
+
+
+					securityVehicleDetailInsertUpdateModel.Make = PMake;
+					securityVehicleDetailInsertUpdateModel.Model = PModel;
+					securityVehicleDetailInsertUpdateModel.Type = PType;
+					securityVehicleDetailInsertUpdateModel.VehicleNo = PVehicle;
+					securityVehicleDetailInsertUpdateModel.InsuranceCompany =PInsuranceCompany;
+
+
+
+
+					var result = await APIRequest.Instance.SecurityVehicleDetailInsertUpdate (securityVehicleDetailInsertUpdateModel);
+
+					if (result != null) {
+						GlobalVariables.DisplayMessage = "Vehicle Details Saved Successfully";
+						MessagingCenter.Send<VMVehicleDetails> (this, Strings.VehicleDetails_Success);
+					} else {
+						MessagingCenter.Send<VMVehicleDetails> (this, Strings.VehicleDetails__FAILURE);
+					}
+
+					securityVehicleDetailModel.Make=securityVehicleDetailInsertUpdateModel.Make;
+					securityVehicleDetailModel.Model=securityVehicleDetailInsertUpdateModel.Model;
+					securityVehicleDetailModel.Type=securityVehicleDetailInsertUpdateModel.Type ;
+					securityVehicleDetailModel.VehicleNo=securityVehicleDetailInsertUpdateModel.VehicleNo;
+					securityVehicleDetailModel.InsuranceCompany=securityVehicleDetailInsertUpdateModel.InsuranceCompany;
+					//				
+					ChangeState (false);
+
 				});
 			}
 		}
 
 		private Command _Cancel = null;
+
 		public Command Cancel {
 			get {
 				return _Cancel ?? new Command (async delegate(object o) {
-					LoadData();
-					ChangeState(false);
+					LoadData ();
+					ChangeState (false);
 				});
 			}
 		}
+
+
 	}
 }
 

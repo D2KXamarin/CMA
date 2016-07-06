@@ -333,6 +333,16 @@ namespace CMA
 			return null;
 		}
 
+		public async Task<string> SecurityPropertyDetailInsertUpdate(SecurityPropertyDetailInsertUpdateModel securityPropertyDetailInsertUpdateModel)
+		{
+			string URL = WebAPI.Instance.webLinkSecurityPropertyDetailUpdate + "/" ;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(securityPropertyDetailInsertUpdateModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
+		}
+
 
 		#region Sync
 		public async Task<string>  GetCustomerDetailsSync(CustomerDetailsSyncRequestModel CustomerDetailsSyncRequestModel)
@@ -392,6 +402,17 @@ namespace CMA
 			return result;
 		}
 
+		public async Task<string> SecurityGoldDetailInsertUpdate(SecurityGoldDetailInsertUpdateModel securityGoldDetailInsertUpdateModel)
+		{
+			string URL = WebAPI.Instance.webLinkSecurityGoldDetailUpdate + "/" ;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(securityGoldDetailInsertUpdateModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
+
+		}
+
 		public async Task<string>  GetSecurityVehicleDetail(SecurityVehicleDetailRequestModel securityVehicleDetailRequestModel)
 		{
 			string JsonParameters = JsonConvert.SerializeObject (securityVehicleDetailRequestModel);
@@ -404,6 +425,43 @@ namespace CMA
 				return result.Replace("\"","").ToDecrypt();
 
 			return result;
+		}
+
+		public async Task<string> GetInsuranceCompanyList (InsuranceCompanyListRequestModel insuranceCompanyListRequestModel)
+		{
+			string JsonParameters = JsonConvert.SerializeObject (insuranceCompanyListRequestModel);
+
+			string URL = WebAPI.Instance.webLinkSecurityVehicleInsuranceCoDetails + "/" + JsonParameters.ToEncrypt ();
+
+			var result = await WebAPI.Instance.HttpRequestProcess ("GET", URL, null);
+
+			if (result != null)
+				return result.Replace("\"","").ToDecrypt ();
+
+			return result;
+
+		}
+
+		public async Task<string> SecurityVehicleDetailInsertUpdate(SecurityVehicleDetailInsertUpdateModel securityVehicleDetailInsertUpdateModel)
+		{
+			string URL = WebAPI.Instance.webLinkSecurityVehicleDetailUpdate + "/" ;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(securityVehicleDetailInsertUpdateModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
+
+		}
+
+		public async Task<string> ChangePasswordUpdate(ChangePasswordUpdateModel changePasswordUpdateModel)
+		{
+			string URL = WebAPI.Instance.webLinkChangePassword ;
+			var result = await WebAPI.Instance.HttpRequestProcess ("POST", URL, JsonConvert.SerializeObject(changePasswordUpdateModel));
+			if (result != null) {
+				return result.Replace ("\"", "").ToDecrypt ();
+			} 
+			return null;
+
 		}
 
 		#endregion

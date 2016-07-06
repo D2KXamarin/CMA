@@ -12,6 +12,8 @@ namespace CMA
         private string webLinkHost = "http://103.1.114.64:8011/CMAAPI/";
 //        private HttpClient _client;
 		public readonly string webLogin;
+		public readonly string webLinkChangePassword;
+
         public readonly string webLinkBranchList;
 
         public readonly string webLinkCustomerList;
@@ -37,16 +39,24 @@ namespace CMA
 		public readonly string webLinkDetailsSync;
 		public readonly string webLinkActionDetailsSync;
 		public readonly string webLinkSecurityGoldDetail;
+		public readonly string webLinkSecurityGoldDetailUpdate;
+
 		public readonly string webLinkSecurityVehicleDetail;
+		public readonly string webLinkSecurityVehicleDetailUpdate;
+		public readonly string webLinkSecurityVehicleInsuranceCoDetails;
+
+
 		public readonly string webLinkSecurityShareDetails;
 		public readonly string webLinkSecurityPropertyDetails;
 		public readonly string webLinkSecurityShareDetailUpdate;
+		public readonly string webLinkSecurityPropertyDetailUpdate;
 
         private static WebAPI _instance = null;
 
         private WebAPI()
         {
 			webLogin = webLinkHost + "CrisMAc/LoginAuth/";
+			webLinkChangePassword = webLinkHost + "CrisMAc/App_ChangePassword";
 
             webLinkBranchList = webLinkHost + "CrisMAc/App_GetBranchList";
 
@@ -78,11 +88,17 @@ namespace CMA
 			webLinkActionDetailsSync = webLinkHost + "CrisMAc/APP_GetActionDetailsSync";
 
 			webLinkSecurityGoldDetail = webLinkHost + "CrisMAc/APP_GetSecurityGoldDetail";
+			webLinkSecurityGoldDetailUpdate = webLinkHost + "CrisMAc/APP_SecurityGoldDetailInsertUpdate";
+
 			webLinkSecurityVehicleDetail = webLinkHost + "CrisMAc/APP_GetSecurityVehicleDetail";
+			webLinkSecurityVehicleDetailUpdate = webLinkHost + "CrisMAc/APP_SecurityVehicleDetailInsertUpdate";
+			webLinkSecurityVehicleInsuranceCoDetails = webLinkHost + "CrisMAc/App_GetInsuranceCompanyList";
+
+
 			webLinkSecurityShareDetails = webLinkHost + "CrisMAc/APP_GetSecurityShareDetail";
 			webLinkSecurityPropertyDetails = webLinkHost + "CrisMAc/APP_GetSecurityPropertyDetail";
 			webLinkSecurityShareDetailUpdate = webLinkHost + "CrisMAc/APP_SecurityShareDetailInsertUpdate";
-
+			webLinkSecurityPropertyDetailUpdate = webLinkHost + "CrisMAc/APP_SecurityPropertyDetailInsertUpdate";
         }
         private static object locker = new object();
 

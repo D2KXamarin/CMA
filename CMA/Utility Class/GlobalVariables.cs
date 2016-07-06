@@ -27,6 +27,8 @@ namespace CMA
 		public static int RemarkStatusKey=20;
 		public static string StakeholderType = string.Empty;
 		public static int AssignActionID= 0;
+		public static string CompanyName=string.Empty;
+
 	}
 }
 

@@ -63,6 +63,16 @@ namespace CMA
 			}
 		}
 
+		private string _PropertyEntityID = string.Empty;
+
+		public string PropertyEntityID {
+			get { return _PropertyEntityID; }
+			set {
+				_PropertyEntityID = value;
+				OnPropertyChanged ("PropertyEntityID");
+			}
+		}
+
 		private string _PAddress1 = string.Empty;
 
 		public string PAddress1 {
@@ -214,11 +224,11 @@ namespace CMA
 		}
 
 		PropertyDetailsModel securityPropertyDetail =null;
-		int Operationflag;
+		string Operationflag;
 
 		public void LoadData(){
 			PInsuranceCo = securityPropertyDetail.InsuranceCompany;
-			PdtpValidUptoDt = securityPropertyDetail.InsuranceExpiryDt;
+//			PdtpValidUptoDt = securityPropertyDetail.InsuranceExpiryDt;
 			PAddress1 = securityPropertyDetail.Add1;
 			PAddress2 = securityPropertyDetail.Add2;
 			PAddress3 = securityPropertyDetail.Add3;
@@ -240,16 +250,17 @@ namespace CMA
 					PropertyDetailsResponseModel responseModelList = JsonConvert.DeserializeObject<PropertyDetailsResponseModel> (result);
 
 					if (responseModelList.SecurityPropertyDetail != null) {
-						Operationflag = 2;
+						Operationflag ="2";
 						securityPropertyDetail = responseModelList.SecurityPropertyDetail [0];
 						if (securityPropertyDetail != null) {
 							LoadData ();
 
 						}
 					} else {
-						Operationflag = 1;
+						Operationflag ="1";
 					}
 				}
+				ChangeState(false);
 			} catch {
 				GlobalVariables.DisplayMessage = "Error";
 				MessagingCenter.Send<VMPropertyDetails> (this, Strings.Display_Message);
@@ -277,45 +288,53 @@ namespace CMA
 			get {
 				return _Save ?? new Command (async delegate(object o) {
 
-//					try {
-//
-//						SecurityShareDetailInsertUpdateModel securityShareDetailInsertUpdateModel = new SecurityShareDetailInsertUpdateModel ();
-//						if (Operationflag == 2) {
-//							securityShareDetailInsertUpdateModel.CustomerEntityID = securityShareDetail.CustomerEntityID;
-//							securityShareDetailInsertUpdateModel.AccountEntityID = securityShareDetail.AccountEntityId;
-//
-//						} else if (Operationflag == 1) {
-//							securityShareDetailInsertUpdateModel.CustomerEntityID = GlobalVariables.CustomerEntityID;
-//							securityShareDetailInsertUpdateModel.AccountEntityID = GlobalVariables.AccountEntityID;
-//						}
-//
-//						securityShareDetailInsertUpdateModel.UserLoginID = GlobalVariables.UserLoginID;
-//						securityShareDetailInsertUpdateModel.CRMEntityID = securityShareDetail.CRMEntityID;
-//						securityShareDetailInsertUpdateModel.SecurityEntityID = Convert.ToInt32(GlobalVariables.SecurityEntityID);
-//
-//						securityShareDetailInsertUpdateModel.NoOfUnit=PNoOfUnit.ToString();
-//						securityShareDetailInsertUpdateModel.CurrentValue=PCurrentValue.ToString();
-//						//to be added kevin securityShareDetailInsertUpdateModel.HOEntityID=
-//						securityShareDetailInsertUpdateModel.OperationFlag = Operationflag;
-//
-//						var result = await APIRequest.Instance.SecurityShareDetailInsertUpdate (securityShareDetailInsertUpdateModel);
-//
-//						if (result != null) {
-//							GlobalVariables.DisplayMessage = "Gold Details Saved Successfully";
-//							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.ShareDetails_Success);
-//						} else {
-//							MessagingCenter.Send<VMSecurityShareDetail> (this, Strings.ShareDetails_Failure);
-//						}
-//						//					securityGoldDetailModelUpdate();
-//						securityShareDetail.NoOfUnit=Convert.ToInt32(securityShareDetailInsertUpdateModel.NoOfUnit) ;
-//						securityShareDetail.CurrentValue=Convert.ToDouble(securityShareDetailInsertUpdateModel.CurrentValue);
-//						ChangeState(false);
-//
-//					} catch {
-//						GlobalVariables.DisplayMessage = "Error... Please try again";
-//						MessagingCenter.Send (this, Strings.Display_Message);
-//					}
-//
+					try {
+
+						SecurityPropertyDetailInsertUpdateModel securityPropertyDetailInsertUpdateModel = new SecurityPropertyDetailInsertUpdateModel ();
+						if (Operationflag == "2") {
+							securityPropertyDetailInsertUpdateModel.CustomerEntityID = securityPropertyDetail.CustomerEntityID;
+							securityPropertyDetailInsertUpdateModel.AccountEntityID = securityPropertyDetail.AccountEntityId;
+
+						} else if (Operationflag == "1") {
+							securityPropertyDetailInsertUpdateModel.CustomerEntityID = GlobalVariables.CustomerEntityID;
+							securityPropertyDetailInsertUpdateModel.AccountEntityID = GlobalVariables.AccountEntityID;
+						}
+
+						securityPropertyDetailInsertUpdateModel.UserLoginID = GlobalVariables.UserLoginID;
+						securityPropertyDetailInsertUpdateModel.SecurityEntityID = SecurityEntityId;
+						securityPropertyDetailInsertUpdateModel.PropertyEntityID=PropertyEntityID;
+						securityPropertyDetailInsertUpdateModel.InsuranceCompany=PInsuranceCo;
+						securityPropertyDetailInsertUpdateModel.ValidUpTo=PdtpValidUptoDt;
+						securityPropertyDetailInsertUpdateModel.Add1=PAddress1;
+						securityPropertyDetailInsertUpdateModel.Add2=PAddress2;
+						securityPropertyDetailInsertUpdateModel.Add2=PAddress3;
+						securityPropertyDetailInsertUpdateModel.Pincode=PPincode;
+						securityPropertyDetailInsertUpdateModel.Landmark=PLandmark;
+						securityPropertyDetailInsertUpdateModel.OperationFlag = Operationflag;
+
+						var result = await APIRequest.Instance.SecurityPropertyDetailInsertUpdate (securityPropertyDetailInsertUpdateModel);
+
+						if (result != null) {
+							GlobalVariables.DisplayMessage = "Property Details Saved Successfully";
+							MessagingCenter.Send<VMPropertyDetails> (this, Strings.Display_Message);
+						} else {
+							GlobalVariables.DisplayMessage = "Error... Please try again";
+							MessagingCenter.Send<VMPropertyDetails> (this, Strings.Display_Message);
+						}
+						//update model with insert update model
+						securityPropertyDetail.InsuranceCompany=securityPropertyDetailInsertUpdateModel.InsuranceCompany;
+						securityPropertyDetail.ValidUpTo=securityPropertyDetailInsertUpdateModel.ValidUpTo;
+						securityPropertyDetail.Add1=securityPropertyDetailInsertUpdateModel.Add1;
+						securityPropertyDetail.Add2=securityPropertyDetailInsertUpdateModel.Add2;
+						securityPropertyDetail.Add3=securityPropertyDetailInsertUpdateModel.Add3;
+						securityPropertyDetail.Pincode=securityPropertyDetailInsertUpdateModel.Pincode;
+						securityPropertyDetail.Landmark=securityPropertyDetailInsertUpdateModel.Landmark;
+						ChangeState(false);
+
+					} catch {
+						GlobalVariables.DisplayMessage = "Error... Please try again";
+						MessagingCenter.Send (this, Strings.Display_Message);
+					}
 
 				});
 			}

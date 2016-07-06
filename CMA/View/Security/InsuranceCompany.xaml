@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:local="clr-namespace:CMA;assembly=CMA" x:Class="CMA.InsuranceCompany" Title="Insurance Company">
+<ContentPage.BindingContext>
+		<local:VMInsuranceCompany />
+	</ContentPage.BindingContext>
+<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+<!--			<Label x:Name="UserName" FontSize="20" Text="Username" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="#FFF">
+			</Label>-->
+			<StackLayout Orientation="Horizontal" HeightRequest="50">
+				<Entry x:Name="txtSearchBranch"  Text="{Binding PSearchValue}" Placeholder="Search Insurance Company" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="btnSearch" Text="Search" HeightRequest="20" Command="{Binding SearchButton}" TextColor="White" HorizontalOptions="Fill" IsEnabled="{Binding IsSearchEnalble}" />
+			</StackLayout>
+			<ActivityIndicator Color="Red" IsVisible="{Binding ActivityIndicator}" IsRunning="{Binding ActivityIndicator}" VerticalOptions="Center" HorizontalOptions="Center">
+			</ActivityIndicator>
+			<ListView x:Name="lvCompanyList" ItemsSource="{Binding PCompanyList}" SelectedItem="{Binding PSelectedCompany}" RowHeight="50" >
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Padding="5">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20">
+									</RowDefinition>
+									<RowDefinition Height="20">
+									</RowDefinition>
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100">
+									</ColumnDefinition>
+									<ColumnDefinition Width="*">
+									</ColumnDefinition>
+								
+								</Grid.ColumnDefinitions>
+							
+								<Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Text="Company Name:">
+								</Label>
+								<Label Grid.Row="0" Grid.Column="1" Text="{Binding CompanyName}">
+								</Label>
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<StackLayout Orientation="Horizontal" HeightRequest="50" HorizontalOptions="CenterAndExpand">
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

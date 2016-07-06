@@ -38,8 +38,10 @@
 							</Entry>
 							<Label Text="Insurance Co." Grid.Row="4" Grid.Column="0">
 							</Label>
-							<Entry x:Name="TxtInsurance" HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Text="{Binding PInsurance}" IsEnabled="{Binding IsEnableInsurance}"  >
+							<Entry x:Name="TxtInsurance" HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Text="{Binding PInsuranceCompany}" IsEnabled="{Binding IsEnableInsurance}"  >
 							</Entry>
+							<Button x:Name="btnInsuranceCO" Text=". . ." HeightRequest="15" Grid.Row="4" Grid.Column="1" WidthRequest="50"  IsEnabled="{Binding IsEnableInsuranceCompany}"
+							HorizontalOptions="EndAndExpand" />
 
 						</Grid>
 					</StackLayout>

@@ -11,10 +11,26 @@ namespace CMA
 
 	public class SecurityGoldDetailModel
 	{
+		public string CustomerEntityID { get; set; }
+		public string AccountEntityId { get; set; }
+		public string CRMEntityID { get; set; }
 		public string Quantity { get; set; }
 		public string Karat { get; set; }
 		public string Margin { get; set; }
 		public string TableName { get; set; }
+	}
+
+	public class SecurityGoldDetailInsertUpdateModel
+	{
+		public string CustomerEntityID { get; set; }
+		public string AccountEntityID { get; set; }
+		public string CRMEntityID { get; set; }
+		public string UserLoginID { get; set; }
+		public int SecurityEntityID { get; set; }
+		public string Quantity { get; set; }
+		public string Karat { get; set; }
+		public string Margin { get; set; }
+		public int OperationFlag  { get; set; }
 	}
 
 

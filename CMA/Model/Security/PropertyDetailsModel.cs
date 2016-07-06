@@ -5,8 +5,10 @@ namespace CMA
 {
 	public class PropertyDetailsModel
 	{
+		public string CustomerEntityID { get; set; }
+		public string AccountEntityId { get; set; }
 		public string InsuranceCompany { get; set; }
-		public string InsuranceExpiryDt { get; set; }
+		public string ValidUpTo { get; set; }
 		public string Add1 { get; set; }
 		public string Add2 { get; set; }
 		public string Add3 { get; set; }
@@ -41,6 +43,7 @@ namespace CMA
 		public string Add3 { get; set; }
 		public string Pincode { get; set; }
 		public string Landmark { get; set; }
+		public string OperationFlag { get; set; }
 	}
 }
 
